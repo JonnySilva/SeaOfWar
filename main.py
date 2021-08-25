@@ -1,7 +1,7 @@
-from console import game_board as GB
+from console.screens import Screens as screen
 
 def main():
-    GB.GameBoard.draw_game_board()
+    screen.menu()
     
 if __name__ == '__main__':
     main()
