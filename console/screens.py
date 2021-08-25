@@ -10,6 +10,18 @@ class Screens:
         UTILS.targeting( option_selected )
         return
     
+    # 1. TELA NOME DO JOGADOR ------------------------
+    def screen_create_player():
+        player = ''
+        while player == '':
+            player = MESSAGE.DRAW_INSERT_NAME()
+            
+            if player == '':
+                UTILS.clear()
+                MESSAGE.MESSAGE_WARNING_EMPTY_NAME()
+            else:
+                print(f'{player}')
+    
     # 2. REGRAS DO JOGO ------------------------------
     def screen_game_rules():
         MESSAGE.DRAW_TITLE_GAME_RULES()
@@ -26,6 +38,7 @@ class Screens:
     
 options_menu = {
     'menu': Screens.menu,
+    '1': Screens.screen_create_player,
     '2': Screens.screen_game_rules,
     '9': Screens.menu,
     '0': Screens.screen_exit

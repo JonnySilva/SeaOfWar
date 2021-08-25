@@ -32,6 +32,9 @@ class Messages:
     def MESSAGE_RETURN_MENU():
         print( '> voltando para o menu', end='' )
         
+    def MESSAGE_WARNING_EMPTY_NAME():
+        print( '> Por favor, digite um nome no campo..\n' )
+        
     # FIM ------------------------------------------
     
     def DRAW_SELECTED_ERROR():
@@ -90,6 +93,9 @@ class Messages:
 [0]. Sair 
 
 > ''' )
+    
+    def DRAW_INSERT_NAME():
+        return input( 'Por favor, digite o seu nome: \n> ' )
 
     # FIM -------------------------------------------------------------------------
     
