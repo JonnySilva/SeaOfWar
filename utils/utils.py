@@ -21,9 +21,9 @@ class Utils:
     
     def loading_or_exit( exit_or_loading = 0 ):
         if exit_or_loading == 0:
-            MESSAGE.DRAW_EXITING()
+            MESSAGE.MESSAGE_EXITING()
         elif exit_or_loading == 1:
-            MESSAGE.DRAW_RETURN_MENU()
+            MESSAGE.MESSAGE_RETURN_MENU()
             
         secconds = 0
         
