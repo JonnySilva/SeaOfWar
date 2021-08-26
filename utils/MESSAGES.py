@@ -27,7 +27,7 @@ class Messages:
     
     # MENSAGENS ------------------------------------
     def MESSAGE_EXITING():
-        print( '> saindo', end='' )
+        print( '> saindo (^ – ^ *) /', end='' )
     
     def MESSAGE_RETURN_MENU():
         print( '> voltando para o menu', end='' )
@@ -91,7 +91,7 @@ class Messages:
     
     def QUESTION_RETURN_OR_EXIT():
         return input( '''
-> Tem certeza que deseja sair? (ツ)
+> Tem certeza que deseja sair? o(〒﹏〒)o
 [enter]. Menu
 [0]. Sair 
 

@@ -13,10 +13,12 @@ class Screens:
     # 1. TELA NOME DO JOGADOR ------------------------
     def screen_create_player():
         player = ''
-        while player == '':
+        player_has_no_name = player == ''
+        
+        while player_has_no_name:
             player = MESSAGE.DRAW_INSERT_NAME()
             
-            if player == '':
+            if player_has_no_name:
                 UTILS.clear()
                 MESSAGE.MESSAGE_WARNING_EMPTY_NAME()
             else:
