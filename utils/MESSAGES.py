@@ -35,6 +35,9 @@ class Messages:
     def MESSAGE_WARNING_EMPTY_NAME():
         print( '> Por favor, digite um nome no campo..\n' )
         
+    def MESSAGE_FORCE_EXIT():
+        print( '\n> Saindo do jogo! \n> Bey Bey (‘▽ `) ノ' )
+        
     # FIM ------------------------------------------
     
     def DRAW_SELECTED_ERROR():
@@ -89,13 +92,13 @@ class Messages:
     def QUESTION_RETURN_OR_EXIT():
         return input( '''
 > Tem certeza que deseja sair? (ツ)
-[Enter]. Menu
+[enter]. Menu
 [0]. Sair 
 
 > ''' )
     
     def DRAW_INSERT_NAME():
         return input( 'Por favor, digite o seu nome: \n> ' )
-
+    
     # FIM -------------------------------------------------------------------------
     
