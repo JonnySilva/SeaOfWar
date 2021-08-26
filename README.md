@@ -2,7 +2,7 @@
 
 ### Projeto de Bloco: Computação e Inteligência Artificial
 
-### Participantes: Jonny Silva, Matheus Silva , Vinícius Brêttas
+### Participantes: [Jonny Silva](https://github.com/JonnySilva), [Matheus Silva](https://github.com/matheus-srego), [Vinícius Brêttas](https://github.com/Brettas)
 
 # BattleShip - Pyhon
 
