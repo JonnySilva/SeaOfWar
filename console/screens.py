@@ -21,8 +21,7 @@ class Screens:
     
     # 0. Sair ----------------------------------------
     def screen_exit():
-        MESSAGE.DRAW_EXIT()
-        option_is_enter = MESSAGE.RETURN_OR_EXIT()
+        option_is_enter = MESSAGE.QUESTION_RETURN_OR_EXIT()
         UTILS.exit( option_is_enter )
     
 options_menu = {

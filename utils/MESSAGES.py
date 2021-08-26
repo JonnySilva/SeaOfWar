@@ -25,19 +25,14 @@ class Messages:
 [0]. Sair
               ''' )
     
-    # MENSAGENS -------------------------
-    def DRAW_EXIT():
-        print( '''
-> Tem certeza que deseja sair? (ツ)
-              ''')
-        
-    def DRAW_EXITING():
-        print( '''
-> saindo''', end='' )
+    # MENSAGENS ------------------------------------
+    def MESSAGE_EXITING():
+        print( '> saindo', end='' )
     
-    def DRAW_RETURN_MENU():
-        print( '''
-> voltando para o menu''', end='' )
+    def MESSAGE_RETURN_MENU():
+        print( '> voltando para o menu', end='' )
+        
+    # FIM ------------------------------------------
     
     def DRAW_SELECTED_ERROR():
         print( '''
@@ -88,9 +83,13 @@ class Messages:
     def OPTION_SELECTED():
        return input( 'Escolha uma das opções listadas. \n> ' )
     
-    def RETURN_OR_EXIT():
+    def QUESTION_RETURN_OR_EXIT():
         return input( '''
+> Tem certeza que deseja sair? (ツ)
 [Enter]. Menu
 [0]. Sair 
 
 > ''' )
+
+    # FIM -------------------------------------------------------------------------
+    
