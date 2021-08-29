@@ -61,9 +61,10 @@ class Messages:
                     *                                                                             *
                     * Os tipos de navios são:                                                     *
                     *  # Porta-aviões (cinco quadrados)                                           *
-                    *  # Navios-tanque (quatro quadrados)                                         *
+                    *  # Encouraçado (quatro quadrados)                                           *
                     *  # Contratorpedeiros (três quadrados)                                       *
-                    *  # Submarinos (dois quadrados)                                              *
+                    *  # Navio-patrulha (dois quadrados)                                          *
+                    *  # Submarinos (um quadrado)                                                 *
                     *                                                                             *
                     * Vale notar que os quadrados que compõem um navio devem estar conectados     *
                     * e em fila reta.                                                             *
