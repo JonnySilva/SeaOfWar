@@ -10,7 +10,7 @@
 
 # Game Design Canvas - (GDC)
 
-![GDC](https://github.com/JonnySilva/battleship-python/blob/main/regra_de_negocio/GMC.jpg)
+![GDC](https://github.com/JonnySilva/battleship-python/blob/main/regra_de_negocio/GDC.jpg)
 
 
 # Game Model Canvas - (GMD)
