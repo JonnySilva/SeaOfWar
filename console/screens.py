@@ -1,5 +1,6 @@
 from utils.MESSAGES import Messages as MESSAGE
 from utils.utils import Utils as UTILS
+from console.game_board import GameBoard as GAME_BOARD
 
 class Screens:
     
@@ -13,16 +14,17 @@ class Screens:
     # 1. TELA NOME DO JOGADOR ------------------------
     def screen_create_player():
         player = ''
-        player_has_no_name = player == ''
         
-        while player_has_no_name:
+        while player == '':
             player = MESSAGE.DRAW_INSERT_NAME()
             
-            if player_has_no_name:
+            if player == '':
                 UTILS.clear()
                 MESSAGE.MESSAGE_WARNING_EMPTY_NAME()
             else:
-                print(f'{player}')
+                print(f'\n{player}')
+                GAME_BOARD.draw_game_board()
+                
     
     # 2. REGRAS DO JOGO ------------------------------
     def screen_game_rules():
