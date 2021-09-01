@@ -10,12 +10,12 @@
 
 # Game Design Canvas - (GDC)
 
-![GDC](https://github.com/JonnySilva/battleship-python/blob/main/regra_de_negocio/GDC.jpg)
+![GDC](https://github.com/JonnySilva/battleship-python/blob/main/regras_de_negocios/GDC.jpg)
 
 
-# Game Model Canvas - (GMD)
+# Game Model Canvas - (GMC)
 
-![GMD](https://github.com/JonnySilva/battleship-python/blob/main/regra_de_negocio/GMC.jpg)
+![GMC](https://github.com/JonnySilva/battleship-python/blob/main/regras_de_negocios/GMC.jpg)
 
 # Objetivo Do Projeto
 
