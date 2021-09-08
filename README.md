@@ -17,7 +17,7 @@
 
 ![GMC](https://github.com/JonnySilva/battleship-python/blob/main/regras_de_negocios/GMC.jpg)
 
-# Objetivo Do Projeto
+# Objetivo
 
 > O objetivo do projeto é criar um jogo que tenha um agente inteligente que faça uso do algoritmo genético.
 
