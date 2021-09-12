@@ -15,18 +15,18 @@ SIZE = len( GRID_SIZE )
 
 GRID_GAME_BOARD = [
     [
-        SPACE for line in range( len( GRID_SIZE ) )
+        SPACE for coordinate_y in range( len( GRID_SIZE ) )
     ]
     
-    for column in range( len( GRID_SIZE ) )
+    for coordinate_x in range( len( GRID_SIZE ) )
 ]
 
 temporary_grid = [
     [
-        SPACE for line in range( len( GRID_SIZE ) )
+        SPACE for coordinate_y in range( len( GRID_SIZE ) )
     ]
 
-    for column in range( len( GRID_SIZE ) )
+    for coordinate_x in range( len( GRID_SIZE ) )
 ]
 # --------------------------------------------
 

@@ -39,12 +39,12 @@ class GameBoard:
         if grid == None:
             grid = CONSTANTS.GRID_GAME_BOARD
         
-        for column in range( len( grid ) ):
-            if column == 0:
+        for coordinate_x in range( len( grid ) ):
+            if coordinate_x == 0:
                 GameBoard.generate_space( 2, CONSTANTS.EMPTY )
             
             GameBoard.generate_space( 2, CONSTANTS.EMPTY )
-            print( string.ascii_uppercase[column], end=CONSTANTS.EMPTY ) # printing letters/columns (A-J) in the terminal..
+            print( string.ascii_uppercase[coordinate_x], end=CONSTANTS.EMPTY ) # printing letters/columns (A-J) in the terminal..
             GameBoard.generate_space( 1, CONSTANTS.EMPTY )
         
         print()
