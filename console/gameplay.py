@@ -23,6 +23,7 @@ class GamePlay:
         elif grid[coordinate_y][coordinate_x] != CONSTANTS.SPACE:
             if verbose:
                 MESSAGES.MESSAGE_WARNING_POSITION()
+                GamePlay.coordinate_model.reset()
             return True
         
         else:

@@ -123,7 +123,7 @@ Digite a coordenada que deseja colocar o {ship_name} ({ship_size} casas):
     
     def QUESTION_CONFIRMATION_COORDINATE():
         return input( '''
-A coordenada está certa? (y/n)
+A coordenada está certa? (s/n)
 
 > ''')
     
