@@ -1,4 +1,9 @@
-from models.ship_model import AircraftCarrierModel as aircraft_carrier, BattleshipModel as battleship, CruiserModel as cruiser, PatrolShipModel as patrol_ship, SubmarineAModel as submarine_a, SubmarineBModel as submarine_b
+from models.aircraft_carrier_model import AircraftCarrierModel as aircraft_carrier
+from models.battleship_model import BattleshipModel as battleship
+from models.crusier_model import CruiserModel as cruiser
+from models.patrol_ship_model import PatrolShipModel as patrol_ship
+from models.submarina_a_model import SubmarineAModel as submarine_a
+from models.submarine_b_model import SubmarineBModel as submarine_b
 
 SPACE = ' '
 EMPTY = ''

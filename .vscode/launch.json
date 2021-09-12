@@ -8,7 +8,7 @@
             
             "program": "${workspaceFolder}/main.py",
             
-            "console": "integratedTerminal",
+            "console": "externalTerminal",
             "PythonPath": "${command:python.interpreterPath}"
         }
     ]
