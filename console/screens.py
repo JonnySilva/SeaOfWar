@@ -1,6 +1,7 @@
 from utils.MESSAGES import Messages as MESSAGE
 from utils.utils import Utils as UTILS
 from console.game_board import GameBoard as GAME_BOARD
+from console.gameplay import GamePlay as gameplay
 
 class Screens:
     
@@ -24,6 +25,7 @@ class Screens:
             else:
                 print(f'\n{player}')
                 GAME_BOARD.draw_game_board()
+                gameplay.insert_ship()
                 
     
     # 2. REGRAS DO JOGO ------------------------------

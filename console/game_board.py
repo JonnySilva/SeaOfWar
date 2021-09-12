@@ -62,8 +62,13 @@ class GameBoard:
             GameBoard.draw_line()
             print( CONST_CORNER_BOTTOM_RIGHT if square_bottom == 9 else CONST_BOTTOM_SEPARATOR, end=EMPTY )
     
-    def draw_game_board():
-        for column in range( len( GRID_GAME_BOARD ) ):
+    def draw_game_board( grid=None ):
+        # grid = grid if grid == None else GRID_GAME_BOARD
+        
+        if grid == None:
+            grid = GRID_GAME_BOARD
+        
+        for column in range( len( grid ) ):
             if column == 0:
                 GameBoard.generate_space( 2, EMPTY )
             
@@ -75,12 +80,12 @@ class GameBoard:
         GameBoard.draw_line_top( 2 )
         print()
         
-        for line in range( len( GRID_GAME_BOARD ) ):
+        for line in range( len( grid ) ):
             print( line, end=SPACE )
             
-            for width in range( len( GRID_GAME_BOARD ) ):
+            for width in range( len( grid ) ):
                 print( CONST_MID_SEPARATOR, end=EMPTY )
-                print( f'{SPACE}{GRID_GAME_BOARD[line][width]}{SPACE}', end=EMPTY )
+                print( f'{SPACE}{grid[line][width]}{SPACE}', end=EMPTY )
                 
             print( CONST_MID_SEPARATOR )
             

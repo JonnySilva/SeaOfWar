@@ -3,6 +3,7 @@ import sys
 from time import sleep
 from utils.MESSAGES import Messages as MESSAGE
 import console.screens as screen
+from models.ship_model import AircraftCarrierModel as aircraft_carrier, BattleshipModel as battleship, CruiserModel as cruiser, PatrolShipModel as patrol_ship, SubmarineAModel as submarine_a, SubmarineBModel as submarine_b
 
 class Utils:
     
@@ -51,3 +52,33 @@ class Utils:
             except KeyError:
                 MESSAGE.DRAW_SELECTED_ERROR()
                 Utils.return_menu()
+                
+    
+    def ship_names_enum( ship_name ):
+        return {
+            
+            aircraft_carrier().ship_name: "Porta-Aviões",
+            battleship().ship_name: "Encouraçado",
+            cruiser().ship_name: "Cruzador",
+            patrol_ship().ship_name: "Barco Patrulha",
+            submarine_a().ship_name: "Submarino",
+            submarine_b().ship_name: "Submarino"
+            
+        }[ship_name]
+        
+    def letter_to_column_number( letter ):
+        return {
+            
+            "A": 0,
+            "B": 1,
+            "C": 2,
+            "D": 3,
+            "E": 4,
+            "F": 5,
+            "G": 6,
+            "H": 7,
+            "I": 8,
+            "J": 9
+            
+        }[letter.upper()]
+        
