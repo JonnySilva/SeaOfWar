@@ -104,6 +104,9 @@ class Messages:
 [h]. Horizontal
 
 > ''' )
+        
+    def QUESTION_WARNING_POSITION():
+        return input( "Por favor, selecione 'v' (vertical) ou 'h' (horizontal): \n> " )
     
     def DRAW_INSERT_NAME():
         return input( 'Por favor, digite o seu nome: \n> ' )

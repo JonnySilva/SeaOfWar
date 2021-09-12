@@ -71,6 +71,16 @@ class GamePlay:
                     
             return column, line
     
+    def vertical_or_horizontal():
+        is_vertical = MESSAGES.QUESTION_HORIZONTAL_OR_VERTICAL().upper()
+        
+        while ( is_vertical != "V" ) and ( is_vertical != "H" ):
+            is_vertical = MESSAGES.QUESTION_WARNING_POSITION().upper()
+        
+        is_vertical = is_vertical == "V"
+        
+        return is_vertical
+    
     def insert_ship():
         for ship_model in CONSTANTS.LIST_OF_SHIP_MODELS:
             placed = False
@@ -81,12 +91,7 @@ class GamePlay:
             while not placed:
                 column, line = GamePlay.insert_coordinate( ship_model, column, line )                
                 
-                is_vertical = MESSAGES.QUESTION_HORIZONTAL_OR_VERTICAL().upper()
-                
-                while ( is_vertical != "V" ) and ( is_vertical != "H" ):
-                    is_vertical = input( "Por favor, selecione 'v' ou 'h': \n> " ).upper()
-                
-                is_vertical = is_vertical == "V"
+                is_vertical = GamePlay.vertical_or_horizontal()
                 
                 temporary_grid = CONSTANTS.GRID_GAME_BOARD
                 

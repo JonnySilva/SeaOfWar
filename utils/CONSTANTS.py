@@ -16,7 +16,7 @@ SIZE = len( GRID_SIZE )
 GRID_GAME_BOARD = [
     [
         SPACE for line in range( len( GRID_SIZE ) )
-    ] 
+    ]
     
     for column in range( len( GRID_SIZE ) )
 ]
