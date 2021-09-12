@@ -1,8 +1,12 @@
 from utils.utils import Utils as UTILS
 from utils.MESSAGES import Messages as MESSAGES
 import utils.CONSTANTS as CONSTANTS
+
 from console.game_board import GameBoard as GameBoard
+
 from models.coordinate_model import CoordinateModel
+from models.submarina_a_model import SubmarineAModel as submarine_a
+from models.submarine_b_model import SubmarineBModel as submarine_b
 
 class GamePlay:
     
@@ -52,6 +56,13 @@ class GamePlay:
                 return True
             else:
                 return False
+        else:
+            if not GamePlay.valid_coordinates( grid, coordinate_model.coordinate_y, coordinate_model.coordinate_y, coordinate_model.coordinate_x, coordinate_model.coordinate_x, verbose ):
+                for i in range( ship_size ):
+                    grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x + i] = ship_size
+                return True
+            else:
+                return False
     
     def insert_coordinate( ship_model, coordinate_model ):
         while coordinate_model.coordinate_x < 0 or coordinate_model.coordinate_y < 0 or coordinate_model.coordinate_x > CONSTANTS.SIZE or coordinate_model.coordinate_y > CONSTANTS.SIZE:
@@ -83,12 +94,15 @@ class GamePlay:
     def insert_ship():
         for ship_model in CONSTANTS.LIST_OF_SHIP_MODELS:
             inserted = False
+            submarine_a_model = submarine_a()
+            submarine_b_model = submarine_b()
             coordinate_model = CoordinateModel()
             
             while not inserted:
                 coordinate_model = GamePlay.insert_coordinate( ship_model, coordinate_model )                
                 
-                coordinate_model.position = GamePlay.vertical_or_horizontal()
+                if ship_model.ship_name != submarine_b_model.ship_name and ship_model.ship_name != submarine_a_model.ship_name:
+                    coordinate_model.position = GamePlay.vertical_or_horizontal()
                 
                 temporary_grid = CONSTANTS.GRID_GAME_BOARD
                 
