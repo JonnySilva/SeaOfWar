@@ -8,13 +8,16 @@
             
             "program": "${workspaceFolder}/main.py",
             
-            "console": "externalTerminal",
-            "PythonPath": "${config:python.pythonPath}"
+            "console": "integratedTerminal",
+            "PythonPath": "${command:python.interpreterPath}"
         }
     ]
 }
 
 // > externalTerminal: usar para usar o bash ou o prompt.
 // > integratedTerminal: usar o terminal do VSCode.
+
+// > [Linux] PythonPath: ${config:python.pythonPath}
+// > [Windows] PythonPath: ${command:python.interpreterPath}
 
 // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
