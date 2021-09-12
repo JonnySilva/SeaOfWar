@@ -97,6 +97,13 @@ class Messages:
 [0]. Sair 
 
 > ''' )
+        
+    def QUESTION_HORIZONTAL_OR_VERTICAL():
+        return input( '''> Deseja que o barco fique na vertical ou na horizontal?
+[v]. Vertical
+[h]. Horizontal
+
+> ''' )
     
     def DRAW_INSERT_NAME():
         return input( 'Por favor, digite o seu nome: \n> ' )

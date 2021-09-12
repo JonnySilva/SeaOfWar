@@ -52,7 +52,6 @@ class Utils:
             except KeyError:
                 MESSAGE.DRAW_SELECTED_ERROR()
                 Utils.return_menu()
-                
     
     def ship_names_enum( ship_name ):
         return {
@@ -81,4 +80,4 @@ class Utils:
             "J": 9
             
         }[letter.upper()]
-        
+    
