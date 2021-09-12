@@ -27,11 +27,26 @@ class Messages:
     
     # MENSAGENS ------------------------------------
     def MESSAGE_EXITING():
-        print( '> saindo', end='' )
+        print( '> saindo (^ – ^ *) /', end='' )
     
     def MESSAGE_RETURN_MENU():
         print( '> voltando para o menu', end='' )
-        
+    
+    def MESSAGE_WARNING_EMPTY_NAME():
+        print( '> Por favor, digite um nome no campo..\n' )
+    
+    def MESSAGE_WARNING_SHIP_OUTSIDE():
+        print( '\n> A embarcação está fora do tabuleiro!' )
+    
+    def MESSAGE_WARNING_POSITION():
+        print( '\n> Esta posição já esta ocupada!' )
+    
+    def MESSAGE_WARNING_CANCEL_COORDINATE():
+        print( '\n> Coordenada cancelada!' )
+    
+    def MESSAGE_FORCE_EXIT():
+        print( '\n> Saindo do jogo! \n> Bey Bey (‘▽ `) ノ' )
+    
     # FIM ------------------------------------------
     
     def DRAW_SELECTED_ERROR():
@@ -86,11 +101,40 @@ class Messages:
     
     def QUESTION_RETURN_OR_EXIT():
         return input( '''
-> Tem certeza que deseja sair? (ツ)
-[Enter]. Menu
+> Tem certeza que deseja sair? o(〒﹏〒)o
+[enter]. Menu
 [0]. Sair 
 
 > ''' )
+    
+    def QUESTION_HORIZONTAL_OR_VERTICAL():
+        return input( '''> Deseja que o barco fique na vertical ou na horizontal?
+[v]. Vertical
+[h]. Horizontal
 
+> ''' )
+    
+    def QUESTION_COORDINATE( ship_name, ship_size ):
+        return input( f'''
+Digite a coordenada que deseja colocar o {ship_name} ({ship_size} casas):
+(exemplo: A1)
+
+> ''' )
+    
+    def QUESTION_CONFIRMATION_COORDINATE():
+        return input( '''
+A coordenada está certa? (s/n)
+
+> ''')
+    
+    def QUESTION_WARNING_COORDINATE():
+        return input( "Por favor, seleciona 's' (sim) ou 'n' (não): \n> " )
+    
+    def QUESTION_WARNING_POSITION():
+        return input( "Por favor, selecione 'v' (vertical) ou 'h' (horizontal): \n> " )
+    
+    def DRAW_INSERT_NAME():
+        return input( 'Por favor, digite o seu nome: \n> ' )
+    
     # FIM -------------------------------------------------------------------------
     

@@ -1,5 +1,7 @@
 from utils.MESSAGES import Messages as MESSAGE
 from utils.utils import Utils as UTILS
+from console.game_board import GameBoard as GAME_BOARD
+from console.gameplay import GamePlay as gameplay
 
 class Screens:
     
@@ -9,6 +11,21 @@ class Screens:
         option_selected = MESSAGE.OPTION_SELECTED()
         UTILS.targeting( option_selected )
         return
+    
+    # 1. TELA NOME DO JOGADOR ------------------------
+    def screen_create_player():
+        player = ''
+        
+        while player == '':
+            player = MESSAGE.DRAW_INSERT_NAME()
+            
+            if player == '':
+                UTILS.clear()
+                MESSAGE.MESSAGE_WARNING_EMPTY_NAME()
+            else:
+                print(f'\n{player}')
+                # GAME_BOARD.draw_game_board()
+                gameplay.insert_ship()
     
     # 2. REGRAS DO JOGO ------------------------------
     def screen_game_rules():
@@ -26,6 +43,7 @@ class Screens:
     
 options_menu = {
     'menu': Screens.menu,
+    '1': Screens.screen_create_player,
     '2': Screens.screen_game_rules,
     '9': Screens.menu,
     '0': Screens.screen_exit

@@ -4,6 +4,13 @@ from time import sleep
 from utils.MESSAGES import Messages as MESSAGE
 import console.screens as screen
 
+from models.aircraft_carrier_model import AircraftCarrierModel as aircraft_carrier
+from models.battleship_model import BattleshipModel as battleship
+from models.crusier_model import CruiserModel as cruiser
+from models.patrol_ship_model import PatrolShipModel as patrol_ship
+from models.submarina_a_model import SubmarineAModel as submarine_a
+from models.submarine_b_model import SubmarineBModel as submarine_b
+
 class Utils:
     
     def clear():
@@ -51,3 +58,20 @@ class Utils:
             except KeyError:
                 MESSAGE.DRAW_SELECTED_ERROR()
                 Utils.return_menu()
+    
+    def letter_to_column_number( letter ):
+        return {
+            
+            "A": 0,
+            "B": 1,
+            "C": 2,
+            "D": 3,
+            "E": 4,
+            "F": 5,
+            "G": 6,
+            "H": 7,
+            "I": 8,
+            "J": 9
+            
+        }[letter.upper()]
+    
