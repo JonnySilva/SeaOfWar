@@ -1,40 +1,13 @@
-from utils.MESSAGES import Messages
-from models.ship_model import AircraftCarrierModel as aircraft_carrier, BattleshipModel as battleship, CruiserModel as cruiser, PatrolShipModel as patrol_ship, SubmarineAModel as submarine_a, SubmarineBModel as submarine_b
-import console.game_board as GAMEBOARD
 from utils.utils import Utils as UTILS
-from console.game_board import GameBoard as gb
-
-SPACE = ' '
-
-# Grid ---------------------------------------
-GRID_SIZE = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-GRID_WIDTH = 3
-
-SIZE = len( GAMEBOARD.GRID_SIZE )
-LIST_OF_SHIP_MODELS = [
-    
-    aircraft_carrier(),
-    battleship(),
-    cruiser(),
-    patrol_ship(),
-    submarine_a(),
-    submarine_b()
-    
-]
+from utils.MESSAGES import Messages as MESSAGES
+import utils.CONSTANTS as CONSTANTS
+from console.game_board import GameBoard as GameBoard
 
 class GamePlay:
     
-    temporary_grid = [
-        [
-            SPACE for line in range( len( GRID_SIZE ) )
-        ]
-
-        for column in range( len( GRID_SIZE ) )
-    ]
-    
     # Regra: O barco não pode sobrepor outro barco e nem ficar fora do tabuleiro.
     def verify_position_grid( grid, line, column, verbose=True ):
-        if column >= SIZE or line >= SIZE or column < 0 or line < 0:
+        if column >= CONSTANTS.SIZE or line >= CONSTANTS.SIZE or column < 0 or line < 0:
             if verbose:
                 print( "> Embarcação fora do tabuleiro!" ) # ({numtocoord(x)}{y})
             return True
@@ -80,7 +53,7 @@ class GamePlay:
                 return False
     
     def insert_coordinate( ship_model, column, line ):
-        while column < 0 or line < 0 or column > SIZE or line > SIZE:
+        while column < 0 or line < 0 or column > CONSTANTS.SIZE or line > CONSTANTS.SIZE:
             ship_name = UTILS.ship_names_enum(ship_model.ship_name)
             
             print( f"\nDigite a coordenada que deseja colocar o {ship_name} ({ship_model.ship_size} casas): \n(exemplo: A1)\n" )
@@ -96,28 +69,27 @@ class GamePlay:
                 except:
                     break
                     
-            return coordinate, column, line
+            return column, line
     
     def insert_ship():
-        for ship_model in LIST_OF_SHIP_MODELS:
+        for ship_model in CONSTANTS.LIST_OF_SHIP_MODELS:
             placed = False
-            coordinate = []
             column = -1
             line = -1
             is_vertical = ""
             
             while not placed:
-                coordinate, column, line = GamePlay.insert_coordinate( ship_model, column, line )                
+                column, line = GamePlay.insert_coordinate( ship_model, column, line )                
                 
-                is_vertical = Messages.QUESTION_HORIZONTAL_OR_VERTICAL().upper()
+                is_vertical = MESSAGES.QUESTION_HORIZONTAL_OR_VERTICAL().upper()
                 
-                while is_vertical != "V" and is_vertical != "H":
+                while ( is_vertical != "V" ) and ( is_vertical != "H" ):
                     is_vertical = input( "Por favor, selecione 'v' ou 'h': \n> " ).upper()
-                    
+                
                 is_vertical = is_vertical == "V"
                 
-                temporary_grid = GAMEBOARD.GRID_GAME_BOARD
+                temporary_grid = CONSTANTS.GRID_GAME_BOARD
                 
                 placed = GamePlay.position_ship( temporary_grid, ship_model.ship_size, line, column, is_vertical )
                 
-                gb.draw_game_board( temporary_grid )
+                GameBoard.draw_game_board( temporary_grid )
