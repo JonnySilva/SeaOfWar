@@ -16,13 +16,13 @@ class GamePlay:
     def verify_position_grid( grid, coordinate_y, coordinate_x, verbose=True ):
         if coordinate_x >= CONSTANTS.SIZE or coordinate_y >= CONSTANTS.SIZE or coordinate_x < 0 or coordinate_y < 0:
             if verbose:
-                print( "\n> A embarcação está fora do tabuleiro!" ) # ({numtocoord(x)}{y})
+                MESSAGES.MESSAGE_WARNING_SHIP_OUTSIDE()
                 GamePlay.coordinate_model.reset()
             return True
         
         elif grid[coordinate_y][coordinate_x] != CONSTANTS.SPACE:
             if verbose:
-                print( "\n> Esta posição já esta ocupada!" ) # ({numtocoord(x)}{y})
+                MESSAGES.MESSAGE_WARNING_POSITION()
             return True
         
         else:
@@ -70,9 +70,9 @@ class GamePlay:
     def insert_coordinate( ship_model, coordinate_model ):
         while coordinate_model.coordinate_x < 0 or coordinate_model.coordinate_y < 0 or coordinate_model.coordinate_x > CONSTANTS.SIZE or coordinate_model.coordinate_y > CONSTANTS.SIZE:
             ship_name = ship_model.ship_name
+            ship_size = ship_model.ship_size
             
-            print( f"\nDigite a coordenada que deseja colocar o {ship_name} ({ship_model.ship_size} casas): \n(exemplo: A1)\n" )
-            coordinate = input( "> " )
+            coordinate = MESSAGES.QUESTION_COORDINATE( ship_name, ship_size )
             
             try:
                 coordinate_model.coordinate_x = int( UTILS.letter_to_column_number( coordinate[0].upper() ) )
@@ -95,13 +95,11 @@ class GamePlay:
         return position
     
     def position_is_correction( ship_model ):
-        print( "A coordenada está certa? (y/n)" )
-        option = input( "> " ).upper()
+        option = MESSAGES.QUESTION_CONFIRMATION_COORDINATE().upper()
         
-        if option == "Y":
-            return GamePlay.position_ship( CONSTANTS.GRID_GAME_BOARD, ship_model, GamePlay.coordinate_model )
-        else:
-            print( "\n> Coordenada cancelada!" )
+        if option == "N":
+            MESSAGES.MESSAGE_WARNING_CANCEL_COORDINATE()
+        else: 
             return True
     
     def insert_ship():
@@ -113,6 +111,7 @@ class GamePlay:
             GamePlay.coordinate_model.reset()
             
             while not inserted:
+                GameBoard.draw_game_board( CONSTANTS.GRID_GAME_BOARD )
                 GamePlay.coordinate_model = GamePlay.insert_coordinate( ship_model, GamePlay.coordinate_model )
                 
                 if ship_model.ship_code != submarine_b_model.ship_code and ship_model.ship_code != submarine_a_model.ship_code:
@@ -122,5 +121,6 @@ class GamePlay:
                 
                 if GamePlay.position_ship( temporary_grid, ship_model, GamePlay.coordinate_model ):
                     GameBoard.draw_game_board( temporary_grid )
-                    GamePlay.position_is_correction( ship_model )
+                    inserted = GamePlay.position_is_correction( ship_model )
+                    print( "teste" )
     

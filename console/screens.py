@@ -24,7 +24,7 @@ class Screens:
                 MESSAGE.MESSAGE_WARNING_EMPTY_NAME()
             else:
                 print(f'\n{player}')
-                GAME_BOARD.draw_game_board()
+                # GAME_BOARD.draw_game_board()
                 gameplay.insert_ship()
                 
     
