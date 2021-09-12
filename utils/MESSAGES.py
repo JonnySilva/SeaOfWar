@@ -120,12 +120,15 @@ Digite a coordenada que deseja colocar o {ship_name} ({ship_size} casas):
 (exemplo: A1)
 
 > ''' )
-        
+    
     def QUESTION_CONFIRMATION_COORDINATE():
         return input( '''
 A coordenada está certa? (y/n)
 
 > ''')
+    
+    def QUESTION_WARNING_COORDINATE():
+        return input( "Por favor, seleciona 's' (sim) ou 'n' (não): \n> " )
     
     def QUESTION_WARNING_POSITION():
         return input( "Por favor, selecione 'v' (vertical) ou 'h' (horizontal): \n> " )

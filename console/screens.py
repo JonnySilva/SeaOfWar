@@ -26,7 +26,6 @@ class Screens:
                 print(f'\n{player}')
                 # GAME_BOARD.draw_game_board()
                 gameplay.insert_ship()
-                
     
     # 2. REGRAS DO JOGO ------------------------------
     def screen_game_rules():

@@ -97,6 +97,9 @@ class GamePlay:
     def position_is_correction( ship_model ):
         option = MESSAGES.QUESTION_CONFIRMATION_COORDINATE().upper()
         
+        while ( option != "S" ) and ( option != "N" ):
+            option = MESSAGES.QUESTION_WARNING_COORDINATE().upper()
+        
         if option == "N":
             MESSAGES.MESSAGE_WARNING_CANCEL_COORDINATE()
         else: 
