@@ -59,18 +59,6 @@ class Utils:
                 MESSAGE.DRAW_SELECTED_ERROR()
                 Utils.return_menu()
     
-    def ship_names_enum( ship_name ):
-        return {
-            
-            aircraft_carrier().ship_name: "Porta-Aviões",
-            battleship().ship_name: "Encouraçado",
-            cruiser().ship_name: "Cruzador",
-            patrol_ship().ship_name: "Barco Patrulha",
-            submarine_a().ship_name: "Submarino",
-            submarine_b().ship_name: "Submarino"
-            
-        }[ship_name]
-        
     def letter_to_column_number( letter ):
         return {
             
