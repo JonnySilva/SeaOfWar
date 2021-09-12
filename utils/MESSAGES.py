@@ -31,13 +31,13 @@ class Messages:
     
     def MESSAGE_RETURN_MENU():
         print( '> voltando para o menu', end='' )
-        
+    
     def MESSAGE_WARNING_EMPTY_NAME():
         print( '> Por favor, digite um nome no campo..\n' )
-        
+    
     def MESSAGE_FORCE_EXIT():
         print( '\n> Saindo do jogo! \n> Bey Bey (‘▽ `) ノ' )
-        
+    
     # FIM ------------------------------------------
     
     def DRAW_SELECTED_ERROR():
@@ -97,14 +97,14 @@ class Messages:
 [0]. Sair 
 
 > ''' )
-        
+    
     def QUESTION_HORIZONTAL_OR_VERTICAL():
         return input( '''> Deseja que o barco fique na vertical ou na horizontal?
 [v]. Vertical
 [h]. Horizontal
 
 > ''' )
-        
+    
     def QUESTION_WARNING_POSITION():
         return input( "Por favor, selecione 'v' (vertical) ou 'h' (horizontal): \n> " )
     

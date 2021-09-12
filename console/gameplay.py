@@ -10,16 +10,19 @@ from models.submarine_b_model import SubmarineBModel as submarine_b
 
 class GamePlay:
     
+    coordinate_model = CoordinateModel()
+    
     # Regra: O barco não pode sobrepor outro barco e nem ficar fora do tabuleiro.
     def verify_position_grid( grid, coordinate_y, coordinate_x, verbose=True ):
         if coordinate_x >= CONSTANTS.SIZE or coordinate_y >= CONSTANTS.SIZE or coordinate_x < 0 or coordinate_y < 0:
             if verbose:
-                print( "> Embarcação fora do tabuleiro!" ) # ({numtocoord(x)}{y})
+                print( "\n> A embarcação está fora do tabuleiro!" ) # ({numtocoord(x)}{y})
+                GamePlay.coordinate_model.reset()
             return True
         
-        elif grid[coordinate_y][coordinate_x] != " ":
+        elif grid[coordinate_y][coordinate_x] != CONSTANTS.SPACE:
             if verbose:
-                print( "> Está posição já esta ocupada!" ) # ({numtocoord(x)}{y})
+                print( "\n> Esta posição já esta ocupada!" ) # ({numtocoord(x)}{y})
             return True
         
         else:
@@ -37,29 +40,29 @@ class GamePlay:
                 
                 j += 1
             i += 1
-            
+        
         return False
     
-    def position_ship( grid, ship_size, coordinate_model, verbose=True ):
+    def position_ship( grid, ship_model, coordinate_model, verbose=True ):
         if coordinate_model.position == "V":
-            if not GamePlay.valid_coordinates( grid, coordinate_model.coordinate_y, ( coordinate_model.coordinate_y + ship_size - 1 ), coordinate_model.coordinate_x, coordinate_model.coordinate_x, verbose ):
+            if not GamePlay.valid_coordinates( grid, coordinate_model.coordinate_y, ( coordinate_model.coordinate_y + ship_model.ship_size - 1 ), coordinate_model.coordinate_x, coordinate_model.coordinate_x, verbose ):
                 # print( f"\t\t ADD: {ship_size}" )
-                for i in range( ship_size ):
-                    grid[coordinate_model.coordinate_y + i][coordinate_model.coordinate_x] = ship_size
+                for i in range( ship_model.ship_size ):
+                    grid[coordinate_model.coordinate_y + i][coordinate_model.coordinate_x] = ship_model.ship_code[0]
                 return True
             else:
                 return False
         elif coordinate_model.position == "H":
-            if not GamePlay.valid_coordinates( grid, coordinate_model.coordinate_y, coordinate_model.coordinate_y, coordinate_model.coordinate_x, ( coordinate_model.coordinate_x + ship_size - 1 ), verbose ):
-                for i in range( ship_size ):
-                    grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x + i] = ship_size
+            if not GamePlay.valid_coordinates( grid, coordinate_model.coordinate_y, coordinate_model.coordinate_y, coordinate_model.coordinate_x, ( coordinate_model.coordinate_x + ship_model.ship_size - 1 ), verbose ):
+                for i in range( ship_model.ship_size ):
+                    grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x + i] = ship_model.ship_code[0]
                 return True
             else:
                 return False
         else:
             if not GamePlay.valid_coordinates( grid, coordinate_model.coordinate_y, coordinate_model.coordinate_y, coordinate_model.coordinate_x, coordinate_model.coordinate_x, verbose ):
-                for i in range( ship_size ):
-                    grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x + i] = ship_size
+                for i in range( ship_model.ship_size ):
+                    grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x + i] = ship_model.ship_code[0]
                 return True
             else:
                 return False
@@ -91,23 +94,33 @@ class GamePlay:
         
         return position
     
+    def position_is_correction( ship_model ):
+        print( "A coordenada está certa? (y/n)" )
+        option = input( "> " ).upper()
+        
+        if option == "Y":
+            return GamePlay.position_ship( CONSTANTS.GRID_GAME_BOARD, ship_model, GamePlay.coordinate_model )
+        else:
+            print( "\n> Coordenada cancelada!" )
+            return True
+    
     def insert_ship():
         for ship_model in CONSTANTS.LIST_OF_SHIP_MODELS:
             inserted = False
+            
             submarine_a_model = submarine_a()
             submarine_b_model = submarine_b()
-            coordinate_model = CoordinateModel()
+            GamePlay.coordinate_model.reset()
             
             while not inserted:
-                coordinate_model = GamePlay.insert_coordinate( ship_model, coordinate_model )                
+                GamePlay.coordinate_model = GamePlay.insert_coordinate( ship_model, GamePlay.coordinate_model )
                 
                 if ship_model.ship_code != submarine_b_model.ship_code and ship_model.ship_code != submarine_a_model.ship_code:
-                    coordinate_model.position = GamePlay.vertical_or_horizontal()
+                    GamePlay.coordinate_model.position = GamePlay.vertical_or_horizontal()
                 
                 temporary_grid = CONSTANTS.GRID_GAME_BOARD
                 
-                inserted = GamePlay.position_ship( temporary_grid, ship_model.ship_size, coordinate_model )
-                
-                UTILS.clear()
-                GameBoard.draw_game_board( temporary_grid )
-                
+                if GamePlay.position_ship( temporary_grid, ship_model, GamePlay.coordinate_model ):
+                    GameBoard.draw_game_board( temporary_grid )
+                    GamePlay.position_is_correction( ship_model )
+    
