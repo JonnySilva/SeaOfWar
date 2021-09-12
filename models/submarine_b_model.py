@@ -3,15 +3,20 @@ class SubmarineBModel( object ):
     def __init__( self ):
         super().__init__()
         
-        self._submarine_b = "SUBMARINE_B"
-        self._submarine_b_size = 1
+        self._ship_name = "Submarino"
+        self._ship_code = "SUBMARINE_B"
+        self._ship_size = 1
     
     # Gets ------------------------------
     @property
     def ship_name( self ):
-        return self._submarine_b
+        return self._ship_name
+    
+    @property
+    def ship_code( self ):
+        return self._ship_code
     
     @property
     def ship_size( self ):
-        return self._submarine_b_size
+        return self._ship_size
     

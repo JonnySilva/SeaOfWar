@@ -66,7 +66,7 @@ class GamePlay:
     
     def insert_coordinate( ship_model, coordinate_model ):
         while coordinate_model.coordinate_x < 0 or coordinate_model.coordinate_y < 0 or coordinate_model.coordinate_x > CONSTANTS.SIZE or coordinate_model.coordinate_y > CONSTANTS.SIZE:
-            ship_name = UTILS.ship_names_enum(ship_model.ship_name)
+            ship_name = ship_model.ship_name
             
             print( f"\nDigite a coordenada que deseja colocar o {ship_name} ({ship_model.ship_size} casas): \n(exemplo: A1)\n" )
             coordinate = input( "> " )
@@ -101,7 +101,7 @@ class GamePlay:
             while not inserted:
                 coordinate_model = GamePlay.insert_coordinate( ship_model, coordinate_model )                
                 
-                if ship_model.ship_name != submarine_b_model.ship_name and ship_model.ship_name != submarine_a_model.ship_name:
+                if ship_model.ship_code != submarine_b_model.ship_code and ship_model.ship_code != submarine_a_model.ship_code:
                     coordinate_model.position = GamePlay.vertical_or_horizontal()
                 
                 temporary_grid = CONSTANTS.GRID_GAME_BOARD
