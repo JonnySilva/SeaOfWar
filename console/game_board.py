@@ -32,13 +32,8 @@ class GameBoard:
         for square_bottom in range( len( CONSTANTS.GRID_SIZE ) ):
             GameBoard.draw_line()
             print( CONSTANTS.CONST_CORNER_BOTTOM_RIGHT if square_bottom == 9 else CONSTANTS.CONST_BOTTOM_SEPARATOR, end=CONSTANTS.EMPTY )
-    
+            
     def draw_game_board( grid=None ):
-        # grid = grid if grid == None else GRID_GAME_BOARD
-        
-        if grid == None:
-            grid = CONSTANTS.GRID_GAME_BOARD
-        
         for coordinate_x in range( len( grid ) ):
             if coordinate_x == 0:
                 GameBoard.generate_space( 2, CONSTANTS.EMPTY )
@@ -57,7 +52,7 @@ class GameBoard:
             for width in range( len( grid ) ):
                 print( CONSTANTS.CONST_MID_SEPARATOR, end=CONSTANTS.EMPTY )
                 print( f'{CONSTANTS.SPACE}{grid[line][width]}{CONSTANTS.SPACE}', end=CONSTANTS.EMPTY )
-                
+            
             print( CONSTANTS.CONST_MID_SEPARATOR )
             
             if line != 9:
@@ -66,4 +61,31 @@ class GameBoard:
         
         GameBoard.draw_line_bottom( 2 )
         print()
+    
+    def invisible_board( grid ):
+        for coordinat_y in range( len( grid ) ):
+            for coordinate_x in range( len( grid[coordinat_y] ) ):
+                if grid[coordinat_y][coordinate_x] == "#":
+                    CONSTANTS.PUBLIC_GRID[coordinat_y][coordinate_x] = "#"
+                
+                elif grid[coordinat_y][coordinate_x].islower():
+                    CONSTANTS.PUBLIC_GRID[coordinat_y][coordinate_x] = "o"
+                
+                else:
+                    CONSTANTS.PUBLIC_GRID[coordinat_y][coordinate_x] = " "
+        
+        return CONSTANTS.PUBLIC_GRID
+    
+    def generate_game_board( grid1=None, grid2=None ):
+        # grid = grid if grid == None else GRID_GAME_BOARD
+        
+        if grid1 != None and grid2 != None:
+            GameBoard.draw_game_board( grid1 )
+            GameBoard.draw_game_board( GameBoard.invisible_board( grid2 ) )
+        
+        elif grid1 != None and grid2 == None:
+            if grid1 == None:
+                grid1 = CONSTANTS.GRID_GAME_BOARD
+            
+            GameBoard.draw_game_board( grid1 )
     

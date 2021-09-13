@@ -127,4 +127,6 @@ class GamePlay:
                     GameBoard.draw_game_board( temporary_grid )
                     inserted = GamePlay.position_is_correction( ship_model )
                     print( "teste" )
+                    
+        return temporary_grid
     
