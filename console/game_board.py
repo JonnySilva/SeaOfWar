@@ -33,7 +33,7 @@ class GameBoard:
             GameBoard.draw_line()
             print( CONSTANTS.CONST_CORNER_BOTTOM_RIGHT if square_bottom == 9 else CONSTANTS.CONST_BOTTOM_SEPARATOR, end=CONSTANTS.EMPTY )
             
-    def draw_game_board( grid = None ):
+    def draw_game_board( grid=None ):
         for coordinate_x in range( len( grid ) ):
             if coordinate_x == 0:
                 GameBoard.generate_space( 2, CONSTANTS.EMPTY )
@@ -62,24 +62,26 @@ class GameBoard:
         GameBoard.draw_line_bottom( 2 )
         print()
     
-    def pubgen(grid):
-        publicgrid = [[" " for i in range(CONSTANTS.SIZE)] for j in range(CONSTANTS.SIZE)]
-        for y in range(len(grid)):
-            for x in range(len(grid[y])):
-                if grid[y][x] == "#":
-                    publicgrid[y][x] = "#"            
-                elif grid[y][x].islower():
-                    publicgrid[y][x] = "o"
+    def invisible_board( grid ):
+        for coordinat_y in range( len( grid ) ):
+            for coordinate_x in range( len( grid[coordinat_y] ) ):
+                if grid[coordinat_y][coordinate_x] == "#":
+                    CONSTANTS.PUBLIC_GRID[coordinat_y][coordinate_x] = "#"
+                
+                elif grid[coordinat_y][coordinate_x].islower():
+                    CONSTANTS.PUBLIC_GRID[coordinat_y][coordinate_x] = "o"
+                
                 else:
-                    publicgrid[y][x] = " "
-        return publicgrid
+                    CONSTANTS.PUBLIC_GRID[coordinat_y][coordinate_x] = " "
+        
+        return CONSTANTS.PUBLIC_GRID
     
     def generate_game_board( grid1=None, grid2=None ):
         # grid = grid if grid == None else GRID_GAME_BOARD
         
         if grid1 != None and grid2 != None:
             GameBoard.draw_game_board( grid1 )
-            GameBoard.draw_game_board( GameBoard.pubgen( grid2 ) )
+            GameBoard.draw_game_board( GameBoard.invisible_board( grid2 ) )
         
         elif grid1 != None and grid2 == None:
             if grid1 == None:

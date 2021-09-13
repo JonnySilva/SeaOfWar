@@ -29,6 +29,14 @@ GRID_IA = [
     for coordinate_x in range( len( GRID_SIZE ) )
 ]
 
+PUBLIC_GRID = [
+    [
+        SPACE for coordinate_y in range( len( GRID_SIZE ) )
+    ]
+    
+    for coordinate_x in range( len( GRID_SIZE ) )
+]
+
 temporary_grid = [
     [
         SPACE for coordinate_y in range( len( GRID_SIZE ) )

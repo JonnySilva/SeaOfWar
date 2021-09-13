@@ -13,7 +13,7 @@ class RandomInteligency:
             RandomInteligency.random_insertion( CONSTANTS.GRID_IA, ship_model )
             
         return CONSTANTS.GRID_IA
-            
+    
     def random_insertion( grid, ship_model ):
         inserted = False
         RandomInteligency.coordinate_model.reset()
@@ -29,4 +29,4 @@ class RandomInteligency:
                 RandomInteligency.coordinate_model.position = "H"
             
             inserted = gameplay.position_ship( grid, ship_model, RandomInteligency.coordinate_model, False)
-        
+    
