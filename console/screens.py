@@ -2,6 +2,7 @@ from utils.MESSAGES import Messages as MESSAGE
 from utils.utils import Utils as UTILS
 from console.game_board import GameBoard as GAME_BOARD
 from console.gameplay import GamePlay as gameplay
+from console.random_inteligency import RandomInteligency as random_inteligency
 
 class Screens:
     
@@ -25,7 +26,10 @@ class Screens:
             else:
                 print(f'\n{player}')
                 # GAME_BOARD.draw_game_board()
-                gameplay.insert_ship()
+                grid1 = gameplay.insert_ship()
+                print( "I.A. Random" )
+                grid2 = random_inteligency.generate_board()
+                GAME_BOARD.generate_game_board( grid1, grid2 )
     
     # 2. REGRAS DO JOGO ------------------------------
     def screen_game_rules():

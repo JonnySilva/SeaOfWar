@@ -21,6 +21,14 @@ GRID_GAME_BOARD = [
     for coordinate_x in range( len( GRID_SIZE ) )
 ]
 
+GRID_IA = [
+    [
+        SPACE for coordinate_y in range( len( GRID_SIZE ) )
+    ]
+    
+    for coordinate_x in range( len( GRID_SIZE ) )
+]
+
 temporary_grid = [
     [
         SPACE for coordinate_y in range( len( GRID_SIZE ) )
