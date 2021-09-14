@@ -121,6 +121,9 @@ Digite a coordenada que deseja colocar o {ship_name} ({ship_size} casas):
 
 > ''' )
     
+    def QUESTION_ATTACK():
+        return input( 'Qual a coordenada do ataque?' )
+    
     def QUESTION_CONFIRMATION_COORDINATE():
         return input( '''
 A coordenada está certa? (s/n)
