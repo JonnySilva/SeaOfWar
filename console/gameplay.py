@@ -68,13 +68,16 @@ class GamePlay:
             else:
                 return False
     
-    def insert_coordinate( ship_model, coordinate_model ):
+    def insert_coordinate( coordinate_model, ship_model=None ):
         while coordinate_model.coordinate_x < 0 or coordinate_model.coordinate_y < 0 or coordinate_model.coordinate_x > CONSTANTS.SIZE or coordinate_model.coordinate_y > CONSTANTS.SIZE:
-            ship_name = ship_model.ship_name
-            ship_size = ship_model.ship_size
-            
-            coordinate = MESSAGES.QUESTION_COORDINATE( ship_name, ship_size )
-            
+            if ship_model != None:
+                ship_name = ship_model.ship_name
+                ship_size = ship_model.ship_size
+                
+                coordinate = MESSAGES.QUESTION_COORDINATE( ship_name, ship_size )
+            else:
+                coordinate = MESSAGES.QUESTION_ATTACK()
+                
             try:
                 coordinate_model.coordinate_x = int( UTILS.letter_to_column_number( coordinate[0].upper() ) )
             except:
@@ -84,7 +87,7 @@ class GamePlay:
                     coordinate_model.coordinate_y = int( coordinate[1] )
                 except:
                     break
-                    
+            
             return coordinate_model
     
     def vertical_or_horizontal():
@@ -116,7 +119,7 @@ class GamePlay:
             
             while not inserted:
                 GameBoard.draw_game_board( CONSTANTS.GRID_GAME_BOARD )
-                GamePlay.coordinate_model = GamePlay.insert_coordinate( ship_model, GamePlay.coordinate_model )
+                GamePlay.coordinate_model = GamePlay.insert_coordinate( GamePlay.coordinate_model, ship_model )
                 
                 if ship_model.ship_code != submarine_b_model.ship_code and ship_model.ship_code != submarine_a_model.ship_code:
                     GamePlay.coordinate_model.position = GamePlay.vertical_or_horizontal()

@@ -3,8 +3,12 @@ from utils.utils import Utils as UTILS
 from console.game_board import GameBoard as GAME_BOARD
 from console.gameplay import GamePlay as gameplay
 from console.random_inteligency import RandomInteligency as random_inteligency
+from console.attacks import Attacks as attacks
+from models.coordinate_model import CoordinateModel
 
 class Screens:
+    
+    coordinate_model = CoordinateModel()
     
     def menu():
         UTILS.clear()
@@ -28,8 +32,26 @@ class Screens:
                 # GAME_BOARD.draw_game_board()
                 grid1 = gameplay.insert_ship()
                 print( "I.A. Random" )
+                #grid1 = random_inteligency.generate_board()
                 grid2 = random_inteligency.generate_board()
                 GAME_BOARD.generate_game_board( grid1, grid2 )
+                
+                number_of_players = 0
+                while number_of_players <= 1:
+                    if number_of_players == 0:
+                        print( "ataque do jogador 1!" )
+                        Screens.coordinate_model = attacks.insert_attack()
+                        number_of_players += attacks.attack( grid2, Screens.coordinate_model )
+                        GAME_BOARD.generate_game_board( grid1, grid2 )
+                    else:
+                        print( "ataque do jogador 2!" )
+                        Screens.coordinate_model = attacks.insert_attack()
+                        number_of_players += attacks.attack( grid1, Screens.coordinate_model )
+                        GAME_BOARD.generate_game_board( grid1, grid2 )
+                        
+                        if number_of_players == 2:
+                            number_of_players = 1
+    
     
     # 2. REGRAS DO JOGO ------------------------------
     def screen_game_rules():
