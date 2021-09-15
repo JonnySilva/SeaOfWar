@@ -1,6 +1,7 @@
 import utils.CONSTANTS as CONSTANTS
 
 class PlayerSkynet:
+    
     def __init__( self, player_name = 'SkyNet', grid = CONSTANTS.GRID_IA ):
         super().__init__()
         
@@ -21,4 +22,4 @@ class PlayerSkynet:
     
     @grid.setter
     def grid( self, grid ):
-        self._player_name = grid
+        self._grid = grid

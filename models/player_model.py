@@ -22,5 +22,5 @@ class PlayerModel:
     
     @grid.setter
     def grid( self, grid ):
-        self._player_name = grid
+        self._grid = grid
     
