@@ -5,10 +5,14 @@ from console.gameplay import GamePlay as gameplay
 from console.random_inteligency import RandomInteligency as random_inteligency
 from console.attacks import Attacks as attacks
 from models.coordinate_model import CoordinateModel
+from models.player_model import PlayerModel
+from models.player_skynet import PlayerSkynet
 
 class Screens:
     
     coordinate_model = CoordinateModel()
+    player_model = PlayerModel()
+    player_skynet = PlayerSkynet()
     
     def menu():
         UTILS.clear()
@@ -19,39 +23,14 @@ class Screens:
     
     # 1. TELA NOME DO JOGADOR ------------------------
     def screen_create_player():
-        player = ''
-        
-        while player == '':
-            player = MESSAGE.DRAW_INSERT_NAME()
+        while Screens.player_model.player_name == '':
+            Screens.player_model.player_name = MESSAGE.DRAW_INSERT_NAME()
             
-            if player == '':
+            if Screens.player_model.player_name == '':
                 UTILS.clear()
                 MESSAGE.MESSAGE_WARNING_EMPTY_NAME()
-            else:
-                print(f'\n{player}')
-                # GAME_BOARD.draw_game_board()
-                grid1 = gameplay.insert_ship()
-                print( "I.A. Random" )
-                #grid1 = random_inteligency.generate_board()
-                grid2 = random_inteligency.generate_board()
-                GAME_BOARD.generate_game_board( grid1, grid2 )
-                
-                number_of_players = 0
-                while number_of_players <= 1:
-                    if number_of_players == 0:
-                        print( "ataque do jogador 1!" )
-                        Screens.coordinate_model = attacks.insert_attack()
-                        number_of_players += attacks.attack( grid2, Screens.coordinate_model )
-                        GAME_BOARD.generate_game_board( grid1, grid2 )
-                    else:
-                        print( "ataque do jogador 2!" )
-                        Screens.coordinate_model = attacks.insert_attack()
-                        number_of_players += attacks.attack( grid1, Screens.coordinate_model )
-                        GAME_BOARD.generate_game_board( grid1, grid2 )
-                        
-                        if number_of_players == 2:
-                            number_of_players = 1
-    
+        else:
+            Screens.screen_insert_ship()
     
     # 2. REGRAS DO JOGO ------------------------------
     def screen_game_rules():
@@ -61,6 +40,33 @@ class Screens:
         option_selected = input( '\n> ' )
         UTILS.targeting( option_selected )
         return
+    
+    # 3. TELA INSERÇÃO DE BARCOS ---------------------
+    def screen_insert_ship():
+        Screens.player_model.grid = gameplay.insert_ship()
+        Screens.player_skynet.grid = random_inteligency.generate_board()
+        
+        GAME_BOARD.generate_game_board( Screens.player_model.grid, Screens.player_skynet.grid )
+        
+        Screens.screen_attacks()
+    
+    # 4. TELA ATAQUES/TIROS --------------------------
+    def screen_attacks():
+        number_of_players = 0
+        while number_of_players <= 1:
+            if number_of_players == 0:
+                print( "ataque do jogador 1!" )
+                Screens.coordinate_model = attacks.insert_attack()
+                number_of_players += attacks.attack( Screens.player_skynet.grid, Screens.coordinate_model )
+                GAME_BOARD.generate_game_board( Screens.player_model.grid, Screens.player_skynet.grid )
+            else:
+                print( "ataque do jogador 2!" )
+                Screens.coordinate_model = attacks.insert_attack()
+                number_of_players += attacks.attack( Screens.player_model.grid, Screens.coordinate_model )
+                GAME_BOARD.generate_game_board( Screens.player_model.grid, Screens.player_skynet.grid )
+                
+                if number_of_players == 2:
+                    number_of_players = 1
     
     # 0. Sair ----------------------------------------
     def screen_exit():
