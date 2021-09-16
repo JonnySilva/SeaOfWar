@@ -14,21 +14,35 @@ class Attacks:
         
         return Attacks.coordinate_model
     
-    def attack( grid, coordinate_model ):
+    def attack( grid, coordinate_model, player ):
         if coordinate_model.coordinate_x >= CONSTANTS.SIZE or coordinate_model.coordinate_y >= CONSTANTS.SIZE:
-            return -1
+            return player
+        
         if grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x].islower():
-            return -1
+            return player
+        
         if grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] == " ":
-           grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] = "*"
-           print()
-           print( "Acertou a água!" ) 
-           return 0
+            grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] = "*"
+            
+            print( "Acertou a água!" )
+            if player == "A":
+                player = "B"
+                return player
+            else:
+                player = "A"
+                return player
+        
         elif grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x].islower() or grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] == "*":
-           return -1
+           return player
+        
         else:
             grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] = grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x].lower()
             print( "Acertou!" )
-            return 1
             
-        
+            if player == "A":
+                player = "B"
+                return player
+            else:
+                player = "A"
+                return player
+    

@@ -122,14 +122,13 @@ class GamePlay:
                 GamePlay.coordinate_model = GamePlay.insert_coordinate( GamePlay.coordinate_model, ship_model )
                 
                 if ship_model.ship_code != submarine_b_model.ship_code and ship_model.ship_code != submarine_a_model.ship_code:
-                    GamePlay.coordinate_model.position = GamePlay.vertical_or_horizontal()
+                    GamePlay.coordinate_model.position = GamePlay.vertical_or_horizontal().upper()
                 
                 temporary_grid = CONSTANTS.GRID_GAME_BOARD
                 
                 if GamePlay.position_ship( temporary_grid, ship_model, GamePlay.coordinate_model ):
                     GameBoard.draw_game_board( temporary_grid )
                     inserted = GamePlay.position_is_correction( ship_model )
-                    print( "teste" )
                     
         return temporary_grid
     
