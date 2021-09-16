@@ -2,7 +2,7 @@ from utils.MESSAGES import Messages as MESSAGE
 from utils.utils import Utils as UTILS
 from console.game_board import GameBoard as GAME_BOARD
 from console.gameplay import GamePlay as gameplay
-from console.random_inteligency import RandomInteligency as random_inteligency
+from console.skynet import Skynet as skynet
 from console.attacks import Attacks as attacks
 from models.coordinate_model import CoordinateModel
 from models.player_model import PlayerModel
@@ -44,7 +44,7 @@ class Screens:
     # 3. TELA INSERÇÃO DE BARCOS ---------------------
     def screen_insert_ship():
         Screens.player_model.grid = gameplay.insert_ship()
-        Screens.player_skynet.grid = random_inteligency.generate_board()
+        Screens.player_skynet.grid = skynet.generate_board()
         
         GAME_BOARD.generate_game_board( Screens.player_model.grid, Screens.player_skynet.grid )
         
