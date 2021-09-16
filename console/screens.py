@@ -54,17 +54,20 @@ class Screens:
     def screen_attacks():
         players = "A"
         
+        skynetCountMoves = 0
         while players in ["A", "B"]:
             grid = None
             
             if players == "A":
                 print( f"\nEsta é a vez do Jogador {Screens.player_model.player_name}!" )
                 grid = Screens.player_skynet.grid
+                Screens.coordinate_model = attacks.insert_attack()
             else:
                 print( f"\nEsta é a vez da SkyNet!" )
                 grid = Screens.player_model.grid
+                Screens.coordinate_model = skynet.skynet_attack(grid, skynetCountMoves)
+                skynetCountMoves += 1    
             
-            Screens.coordinate_model = attacks.insert_attack()
             players = attacks.attack( grid, Screens.coordinate_model, players )
             GAME_BOARD.generate_game_board( Screens.player_model.grid, Screens.player_skynet.grid )
     
