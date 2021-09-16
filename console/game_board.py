@@ -102,8 +102,8 @@ class GameBoard:
     def invisible_board( grid ):
         for coordinat_y in range( len( grid ) ):
             for coordinate_x in range( len( grid[coordinat_y] ) ):
-                if grid[coordinat_y][coordinate_x] == "#":
-                    CONSTANTS.PUBLIC_GRID[coordinat_y][coordinate_x] = "#"
+                if grid[coordinat_y][coordinate_x] == "*":
+                    CONSTANTS.PUBLIC_GRID[coordinat_y][coordinate_x] = "*"
                 
                 elif grid[coordinat_y][coordinate_x].islower():
                     CONSTANTS.PUBLIC_GRID[coordinat_y][coordinate_x] = "o"
