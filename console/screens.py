@@ -52,26 +52,23 @@ class Screens:
     
     # 4. TELA ATAQUES/TIROS --------------------------
     def screen_attacks():
-        player = "PLAYER_HUMAN"
-        skynetCountMoves = 0
+        players = "A"
         
-        while player in ["PLAYER_HUMAN", "SKYNET"]:
+        skynetCountMoves = 0
+        while players in ["A", "B"]:
             grid = None
             
-            if player == "PLAYER_HUMAN":
+            if players == "A":
                 print( f"\nEsta é a vez do Jogador {Screens.player_model.player_name}!" )
-                
                 grid = Screens.player_skynet.grid
                 Screens.coordinate_model = attacks.insert_attack()
-                
-            if player == "SKYNET":
+            else:
                 print( f"\nEsta é a vez da SkyNet!" )
-                
                 grid = Screens.player_model.grid
                 Screens.coordinate_model = skynet.skynet_attack(grid, skynetCountMoves)
                 skynetCountMoves += 1    
             
-            player = attacks.attack( grid, Screens.coordinate_model, player )
+            players = attacks.attack( grid, Screens.coordinate_model, players )
             GAME_BOARD.generate_game_board( Screens.player_model.grid, Screens.player_skynet.grid )
     
     # 0. Sair ----------------------------------------
