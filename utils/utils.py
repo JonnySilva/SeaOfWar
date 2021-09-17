@@ -5,13 +5,6 @@ from time import sleep
 from utils.MESSAGES import Messages as MESSAGE
 import console.screens as screen
 
-from models.aircraft_carrier_model import AircraftCarrierModel as aircraft_carrier
-from models.battleship_model import BattleshipModel as battleship
-from models.crusier_model import CruiserModel as cruiser
-from models.patrol_ship_model import PatrolShipModel as patrol_ship
-from models.submarina_a_model import SubmarineAModel as submarine_a
-from models.submarine_b_model import SubmarineBModel as submarine_b
-
 class Utils:
     
     def clear():
@@ -75,6 +68,9 @@ class Utils:
             "J": 9
             
         }[letter.upper()]
+        
+    def coordinate_is_digit( coordinate ):
+        return coordinate.isdigit()
 
     def convert_grid_to_skynet_solution(grid):
         gridArray = np.asarray(grid)
@@ -88,3 +84,4 @@ class Utils:
         desired_arrayInt = desired_array.astype(np.int)
 
         return desired_arrayInt
+    
