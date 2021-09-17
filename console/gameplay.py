@@ -84,7 +84,7 @@ class GamePlay:
                 break
             else:
                 try:
-                    coordinate_model.coordinate_y = int( coordinate[1] ) if UTILS.coordinate_is_digit( coordinate[0] ) else int( UTILS.letter_to_column_number( coordinate[1].upper() ) )
+                    coordinate_model.coordinate_y = int( coordinate[1] ) if UTILS.coordinate_is_digit( coordinate[1] ) else int( UTILS.letter_to_column_number( coordinate[1].upper() ) )
                 except:
                     break
             
