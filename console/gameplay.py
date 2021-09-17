@@ -79,12 +79,12 @@ class GamePlay:
                 coordinate = MESSAGES.QUESTION_ATTACK()
                 
             try:
-                coordinate_model.coordinate_x = int( UTILS.letter_to_column_number( coordinate[0].upper() ) )
+                coordinate_model.coordinate_x = int( coordinate[0] ) if UTILS.coordinate_is_digit( coordinate[0] ) else int( UTILS.letter_to_column_number( coordinate[0].upper() ) )
             except:
                 break
             else:
                 try:
-                    coordinate_model.coordinate_y = int( coordinate[1] )
+                    coordinate_model.coordinate_y = int( coordinate[1] ) if UTILS.coordinate_is_digit( coordinate[0] ) else int( UTILS.letter_to_column_number( coordinate[1].upper() ) )
                 except:
                     break
             
