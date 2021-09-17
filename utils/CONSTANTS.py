@@ -60,6 +60,7 @@ CONST_BOTTOM_SEPARATOR = "\u2534"       # ┴
 CONST_MID_SEPARATOR = "\u2502"          # │
 # --------------------------------------------
 
+# List of Ship Models ----------------------
 LIST_OF_SHIP_MODELS = [
     
     aircraft_carrier(),
@@ -70,3 +71,18 @@ LIST_OF_SHIP_MODELS = [
     submarine_b()
     
 ]
+# --------------------------------------------
+
+# Constants used in Skynet Class -------------
+CONST_SEQUENCE = 'Sequence'
+CONST_CHROMOSSOME = 'Chromosome'
+CONST_GENERATION = 'Generation'
+CONST_BIRTH = 'Birth'
+CONST_FITNESS = 'Fitness'
+CONST_PARENTS = 'Parents'
+CONST_ELITE = 'Elite'
+CONST_ELITISM = 'Elitism'
+CONST_RANDOM = 'Random'
+CONST_MUTATION = 'Mutation'
+CONST_SPLICE_PAIR = 'Splice Pair'
+# --------------------------------------------

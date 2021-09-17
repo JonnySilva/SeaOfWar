@@ -1,5 +1,6 @@
 import os
 import sys
+import numpy as np
 from time import sleep
 from utils.MESSAGES import Messages as MESSAGE
 import console.screens as screen
@@ -70,4 +71,17 @@ class Utils:
         
     def coordinate_is_digit( coordinate ):
         return coordinate.isdigit()
+
+    def convert_grid_to_skynet_solution(grid):
+        gridArray = np.asarray(grid)
+        desired_array1 = np.asarray([[j.replace(' ', '0') for j in i] for i in gridArray])
+        desired_array2 = np.asarray([[j.replace('A', '1') for j in i] for i in desired_array1])
+        desired_array3 = np.asarray([[j.replace('B', '1') for j in i] for i in desired_array2])
+        desired_array4 = np.asarray([[j.replace('C', '1') for j in i] for i in desired_array3])
+        desired_array5 = np.asarray([[j.replace('P', '1') for j in i] for i in desired_array4])
+        desired_array = np.asarray([[j.replace('S', '1') for j in i] for i in desired_array5])
+
+        desired_arrayInt = desired_array.astype(np.int)
+
+        return desired_arrayInt
     
