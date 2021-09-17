@@ -260,26 +260,28 @@ class Skynet:
         
         return gene_pool
 
-    def skynet_attack(grid, skynetCountMoves):
+    def skynet_attack( grid, skynetCountMoves ):
         if skynetCountMoves == 0:
-            print( f"\nSkyNet está realizando o processo de otimização para suas jogadas..." )
-            gridConvertedToSolution = utils.convert_grid_to_skynet_solution(grid)            
-            genetic_solution = ''.join(str(x) for x in list(gridConvertedToSolution.flatten()))
+            print( f"\nA SkyNet está criando uma estratégia para ganhar de você", end=CONSTANTS.EMPTY )
+            gridConvertedToSolution = utils.convert_grid_to_skynet_solution( grid )            
+            genetic_solution = ( '' ).join( str( x ) for x in list( gridConvertedToSolution.flatten() ) )
 
-            gene_pool = Skynet.solve(genetic_solution, 10)
+            gene_pool = Skynet.solve( genetic_solution, 10 )
             gene_filtered = gene_pool.loc[gene_pool.Fitness.idxmax()]
             
-            geneArrayReturned = np.array(list(gene_filtered.Chromosome), dtype=int)
-            geneArrayReshaped = np.reshape(geneArrayReturned, (10, 10))
+            utils.draw_points()
             
-            ship_positions = np.where(geneArrayReshaped == 1)
+            geneArrayReturned = np.array( list( gene_filtered.Chromosome ), dtype=int )
+            geneArrayReshaped = np.reshape( geneArrayReturned, ( 10, 10 ) )
+            
+            ship_positions = np.where( geneArrayReshaped == 1 )
             Skynet.skynet_coordinate_x = ship_positions[1]
             Skynet.skynet_coordinate_y = ship_positions[0]
             Skynet.skynet_coordinate()
         else:
             Skynet.skynet_coordinate()
         return Skynet.coordinate_model
-
+    
     def skynet_coordinate():
         Skynet.coordinate_model.coordinate_x = Skynet.skynet_coordinate_x[0]
         Skynet.coordinate_model.coordinate_y = Skynet.skynet_coordinate_y[0]
