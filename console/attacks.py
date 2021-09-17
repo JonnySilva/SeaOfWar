@@ -25,12 +25,8 @@ class Attacks:
             grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] = "*"
             
             print( "Acertou a água!" )
-            if player == "A":
-                player = "B"
-                return player
-            else:
-                player = "A"
-                return player
+            
+            return "SKYNET" if player == "PLAYER_HUMAN" else player
         
         elif grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x].islower() or grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] == "*":
            return player
@@ -39,10 +35,5 @@ class Attacks:
             grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] = grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x].lower()
             print( "Acertou!" )
             
-            if player == "A":
-                player = "B"
-                return player
-            else:
-                player = "A"
-                return player
+            return "SKYNET" if player == "PLAYER_HUMAN" else player
     
