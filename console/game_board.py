@@ -113,6 +113,14 @@ class GameBoard:
         
         return CONSTANTS.PUBLIC_GRID
     
+    def remove_ship( letter_ship ):
+        for coordinate_y in range( CONSTANTS.SIZE ):
+            for coordinate_x in range( CONSTANTS.SIZE ):
+                if CONSTANTS.GRID_GAME_BOARD[coordinate_y][coordinate_x] == letter_ship.upper():
+                    CONSTANTS.GRID_GAME_BOARD[coordinate_y][coordinate_x] = " "
+        
+        return CONSTANTS.GRID_GAME_BOARD
+    
     def generate_game_board( grid1=None, grid2=None ):
         # grid = grid if grid == None else GRID_GAME_BOARD
         
