@@ -73,11 +73,11 @@ class Screens:
             has_winner = gameplay.has_winner()
             
             if has_winner == 2:
-                print( "O jogador {Screens.player_model.player_name} ganhou!")
+                print( f"\nO jogador {Screens.player_model.player_name} ganhou!")
                 break
             
             if has_winner == 1:
-                print( "A SkyNet ganhou!")
+                print( f"\nA SkyNet ganhou!")
                 break
                 
     
