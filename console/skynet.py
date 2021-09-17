@@ -262,6 +262,7 @@ class Skynet:
 
     def skynet_attack(grid, skynetCountMoves):
         if skynetCountMoves == 0:
+            print( f"\nSkyNet está realizando o processo de otimização para suas jogadas..." )
             gridConvertedToSolution = utils.convert_grid_to_skynet_solution(grid)            
             genetic_solution = ''.join(str(x) for x in list(gridConvertedToSolution.flatten()))
 
@@ -272,8 +273,8 @@ class Skynet:
             geneArrayReshaped = np.reshape(geneArrayReturned, (10, 10))
             
             ship_positions = np.where(geneArrayReshaped == 1)
-            Skynet.skynet_coordinate_x = ship_positions[0]
-            Skynet.skynet_coordinate_y = ship_positions[1]
+            Skynet.skynet_coordinate_x = ship_positions[1]
+            Skynet.skynet_coordinate_y = ship_positions[0]
             Skynet.skynet_coordinate()
         else:
             Skynet.skynet_coordinate()
