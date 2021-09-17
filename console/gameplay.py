@@ -13,20 +13,20 @@ class GamePlay:
     coordinate_model = CoordinateModel()
     
     def has_winner():
-        player_human = 0
-        skynet = 0
+        amount_upper_letters_to_player = 0
+        amount_upper_letters_to_skynet = 0
         
         for coordinate_y in range( CONSTANTS.SIZE ):
             for coordinate_x in range( CONSTANTS.SIZE ):
                 if CONSTANTS.GRID_GAME_BOARD[coordinate_y][coordinate_x].isupper():
-                    player_human += 1
+                    amount_upper_letters_to_skynet += 1
                 if CONSTANTS.GRID_IA[coordinate_y][coordinate_x].isupper():
-                    skynet += 1
-        
-        if player_human == 0:
+                    amount_upper_letters_to_player += 1
+            
+        if amount_upper_letters_to_player == 0:
             return 2
         
-        if skynet == 0:
+        if amount_upper_letters_to_skynet == 0:
             return 1
         
         return 0
