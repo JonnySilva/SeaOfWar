@@ -12,6 +12,25 @@ class GamePlay:
     
     coordinate_model = CoordinateModel()
     
+    def has_winner():
+        player_human = 0
+        skynet = 0
+        
+        for coordinate_y in range( CONSTANTS.SIZE ):
+            for coordinate_x in range( CONSTANTS.SIZE ):
+                if CONSTANTS.GRID_GAME_BOARD[coordinate_y][coordinate_x].isupper():
+                    player_human += 1
+                if CONSTANTS.GRID_IA[coordinate_y][coordinate_x].isupper():
+                    skynet += 1
+        
+        if player_human == 0:
+            return 2
+        
+        if skynet == 0:
+            return 1
+        
+        return 0
+    
     # Regra: O barco não pode sobrepor outro barco e nem ficar fora do tabuleiro.
     def verify_position_grid( grid, coordinate_y, coordinate_x, verbose=True ):
         if coordinate_x >= CONSTANTS.SIZE or coordinate_y >= CONSTANTS.SIZE or coordinate_x < 0 or coordinate_y < 0:
@@ -84,7 +103,7 @@ class GamePlay:
                 break
             else:
                 try:
-                    coordinate_model.coordinate_y = int( coordinate[1] ) if UTILS.coordinate_is_digit( coordinate[0] ) else int( UTILS.letter_to_column_number( coordinate[1].upper() ) )
+                    coordinate_model.coordinate_y = int( coordinate[1] ) if UTILS.coordinate_is_digit( coordinate[1] ) else int( UTILS.letter_to_column_number( coordinate[1].upper() ) )
                 except:
                     break
             

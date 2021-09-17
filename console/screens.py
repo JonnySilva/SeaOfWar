@@ -65,11 +65,21 @@ class Screens:
             else:
                 print( f"\nEsta é a vez da SkyNet!" )
                 grid = Screens.player_model.grid
-                Screens.coordinate_model = skynet.skynet_attack(grid, skynetCountMoves)
+                Screens.coordinate_model = skynet.skynet_attack( grid, skynetCountMoves )
                 skynetCountMoves += 1    
             
             players = attacks.attack( grid, Screens.coordinate_model, players )
             GAME_BOARD.generate_game_board( Screens.player_model.grid, Screens.player_skynet.grid )
+            has_winner = gameplay.has_winner()
+            
+            if has_winner == 2:
+                print( "O jogador {Screens.player_model.player_name} ganhou!")
+                break
+            
+            if has_winner == 1:
+                print( "A SkyNet ganhou!")
+                break
+                
     
     # 0. Sair ----------------------------------------
     def screen_exit():
