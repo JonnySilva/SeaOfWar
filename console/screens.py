@@ -2,7 +2,7 @@ from utils.MESSAGES import Messages as MESSAGE
 from utils.utils import Utils as UTILS
 from console.game_board import GameBoard as GAME_BOARD
 from console.gameplay import GamePlay as gameplay
-from console.random_inteligency import RandomInteligency as random_inteligency
+from console.skynet import Skynet as skynet
 from console.attacks import Attacks as attacks
 from models.coordinate_model import CoordinateModel
 from models.player_model import PlayerModel
@@ -44,7 +44,7 @@ class Screens:
     # 3. TELA INSERÇÃO DE BARCOS ---------------------
     def screen_insert_ship():
         Screens.player_model.grid = gameplay.insert_ship()
-        Screens.player_skynet.grid = random_inteligency.generate_board()
+        Screens.player_skynet.grid = skynet.generate_board()
         
         GAME_BOARD.generate_game_board( Screens.player_model.grid, Screens.player_skynet.grid )
         
@@ -54,17 +54,20 @@ class Screens:
     def screen_attacks():
         players = "A"
         
+        skynetCountMoves = 0
         while players in ["A", "B"]:
             grid = None
             
             if players == "A":
                 print( f"\nEsta é a vez do Jogador {Screens.player_model.player_name}!" )
                 grid = Screens.player_skynet.grid
+                Screens.coordinate_model = attacks.insert_attack()
             else:
                 print( f"\nEsta é a vez da SkyNet!" )
                 grid = Screens.player_model.grid
+                Screens.coordinate_model = skynet.skynet_attack(grid, skynetCountMoves)
+                skynetCountMoves += 1    
             
-            Screens.coordinate_model = attacks.insert_attack()
             players = attacks.attack( grid, Screens.coordinate_model, players )
             GAME_BOARD.generate_game_board( Screens.player_model.grid, Screens.player_skynet.grid )
     
