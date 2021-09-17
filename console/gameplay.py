@@ -125,6 +125,7 @@ class GamePlay:
         
         if option == "N":
             MESSAGES.MESSAGE_WARNING_CANCEL_COORDINATE()
+            return False
         else: 
             return True
     
@@ -132,11 +133,11 @@ class GamePlay:
         for ship_model in CONSTANTS.LIST_OF_SHIP_MODELS:
             inserted = False
             
-            submarine_a_model = submarine_a()
-            submarine_b_model = submarine_b()
-            GamePlay.coordinate_model.reset()
-            
             while not inserted:
+                submarine_a_model = submarine_a()
+                submarine_b_model = submarine_b()
+                GamePlay.coordinate_model.reset()
+                
                 GameBoard.draw_game_board( CONSTANTS.GRID_GAME_BOARD )
                 GamePlay.coordinate_model = GamePlay.insert_coordinate( GamePlay.coordinate_model, ship_model )
                 
@@ -148,6 +149,10 @@ class GamePlay:
                 if GamePlay.position_ship( temporary_grid, ship_model, GamePlay.coordinate_model ):
                     GameBoard.draw_game_board( temporary_grid )
                     inserted = GamePlay.position_is_correction( ship_model )
+                    
+                    if inserted == False:
+                        temporary_grid = GameBoard.remove_ship( ship_model.ship_code[0] )
+                        print( "\nCoordenada cancelada!\n" )
                     
         return temporary_grid
     
