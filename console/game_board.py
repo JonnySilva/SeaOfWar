@@ -4,6 +4,9 @@ import utils.CONSTANTS as CONSTANTS
 
 class GameBoard:
     
+    human_lifes = [False,False,False,False,False,False]
+    skynet_lifes = [False,False,False,False,False,False]
+
     # Draw table ---------------------
     def generate_space( amount, final ):
         print( f'{CONSTANTS.SPACE * int( amount )}', end=final )
@@ -65,10 +68,9 @@ class GameBoard:
         GameBoard.draw_line_bottom( 2 )
         print()
         
-    def draw_life( grid ):
-        SHIP_REF = ["A", "B", "C", "D", "S", "S"]
-        ships = [False,False,False,False,False,False]
-        
+    def draw_life( grid, ships):
+        SHIP_REF = ["A", "B", "C", "P", "S", "S"]
+               
         for i in range( len( SHIP_REF ) ):
             ships[i] = True
         
@@ -77,25 +79,25 @@ class GameBoard:
                 if grid[y][x] == "A":
                     ships[0] = False
                 if grid[y][x] == "B":
-                    ships[1] == False
+                    ships[1] = False
                 if grid[y][x] == "C":
-                    ships[2] == False
-                if grid[y][x] == "D":
-                    ships[3] == False
+                    ships[2] = False
+                if grid[y][x] == "P":
+                    ships[3] = False
                 if grid[y][x] == "S":
-                    ships[4] == False
+                    ships[4] = False
                 if grid[y][x] == "S":
-                    ships[5] == False
+                    ships[5] = False
         
         print( CONSTANTS.SPACE, end=CONSTANTS.EMPTY )
         
         for i in range( len( SHIP_REF ) ):
             print( SHIP_REF[i] + CONSTANTS.SPACE, end=CONSTANTS.EMPTY )
             
-            if SHIP_REF[i]:
-                print( "\u2665", end=CONSTANTS.SPACE )
-            else:
+            if ships[i]:
                 print( "\u2661", end=CONSTANTS.SPACE )
+            else:
+                print( "\u2665", end=CONSTANTS.SPACE )
                 
         print()
     
@@ -113,14 +115,14 @@ class GameBoard:
         
         return CONSTANTS.PUBLIC_GRID
     
-    def generate_game_board( grid1=None, grid2=None ):
+    def generate_game_board( grid1=None, grid2=None):
         # grid = grid if grid == None else GRID_GAME_BOARD
         
         if grid1 != None and grid2 != None:
             GameBoard.draw_game_board( grid1 )
-            GameBoard.draw_life( grid1 )
+            GameBoard.draw_life( grid1, GameBoard.human_lifes )
             GameBoard.draw_game_board( GameBoard.invisible_board( grid2 ) )
-            GameBoard.draw_life( grid2 )
+            GameBoard.draw_life( grid2, GameBoard.skynet_lifes )
         
         elif grid1 != None and grid2 == None:
             if grid1 == None:
