@@ -7,6 +7,17 @@ class PlayerModel:
         
         self._player_name = player_name
         self._grid = grid
+
+    def reset_player_grid( self ):
+        CONSTANTS.GRID_GAME_BOARD = [
+            [
+                CONSTANTS.SPACE for coordinate_y in range( len( CONSTANTS.GRID_SIZE ) )
+            ]
+            
+            for coordinate_x in range( len( CONSTANTS.GRID_SIZE ) )
+        ]
+        self._grid = CONSTANTS.GRID_GAME_BOARD 
+
     
     @property
     def player_name( self ):

@@ -138,6 +138,9 @@ A coordenada está certa? (s/n)
     
     def DRAW_INSERT_NAME():
         return input( 'Por favor, digite o seu nome: \n> ' )
+
+    def QUESTION_PLAY_AGAIN():
+        return input( "\n> Gostaria de Jogar novamente? (s/n)" )
     
     # FIM -------------------------------------------------------------------------
     
