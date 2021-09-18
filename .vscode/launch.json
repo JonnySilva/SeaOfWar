@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Battleship Game",
+            "type": "python",
+            "request": "launch",
+            
+            "program": "${workspaceFolder}/sea_of_war.py",
+            
+            "console": "externalTerminal",
+            "PythonPath": "${command:python.interpreterPath}"
+        }
+    ]
+}
+
+// > externalTerminal: usar para usar o bash ou o prompt.
+// > integratedTerminal: usar o terminal do VSCode.
+
+// > [Linux] PythonPath: ${command:python.interpreterPath}
+// > [Windows] PythonPath: ${command:python.interpreterPath}
+
+// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387

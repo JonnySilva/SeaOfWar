@@ -2,7 +2,7 @@
 
 ### Projeto de Bloco: Computação e Inteligência Artificial
 
-### Participantes: Jonny Silva, Matheus Silva , Vinícius Brêttas
+### Participantes: [Jonny Silva](https://github.com/JonnySilva), [Matheus Silva](https://github.com/matheus-srego), [Vinícius Brêttas](https://github.com/Brettas)
 
 # BattleShip - Pyhon
 
@@ -10,16 +10,18 @@
 
 # Game Design Canvas - (GDC)
 
-![GDC](https://github.com/JonnySilva/battleship-python/blob/main/regra_de_negocio/GMC.jpg)
+![GDC](https://github.com/JonnySilva/battleship-python/blob/main/regras_de_negocios/GDC.jpg)
 
 
-# Game Model Canvas - (GMD)
+# Game Model Canvas - (GMC)
 
-![GMD](https://github.com/JonnySilva/battleship-python/blob/main/regra_de_negocio/GMC.jpg)
+![GMC](https://github.com/JonnySilva/battleship-python/blob/main/regras_de_negocios/GMC.jpg)
 
-# Objetivo Do Projeto
+# Objetivo
 
 > O objetivo do projeto é criar um jogo que tenha um agente inteligente que faça uso do algoritmo genético.
 
 # Tecnologias
+
+* Python
 
