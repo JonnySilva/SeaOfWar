@@ -6,7 +6,7 @@
             "type": "python",
             "request": "launch",
             
-            "program": "${workspaceFolder}/main.py",
+            "program": "${workspaceFolder}/sea_of_war.py",
             
             "console": "externalTerminal",
             "PythonPath": "${command:python.interpreterPath}"
