@@ -1,9 +1,9 @@
 from shared.MESSAGES import Messages as MESSAGE
 from shared.utils import Utils as UTILS
 from lib.game_board import GameBoard as GAME_BOARD
-from scripts.gameplay import GamePlay as gameplay
-from scripts.skynet_ai import SkynetAI as skynet
-from scripts.attacks import Attacks as attacks
+from src.gameplay import GamePlay as gameplay
+from src.skynet_ai import SkynetAI as skynet
+from src.attacks import Attacks as attacks
 from models.coordinate_model import CoordinateModel
 from models.players.player_model import PlayerModel
 from models.players.player_skynet import PlayerSkynet

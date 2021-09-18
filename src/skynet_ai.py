@@ -5,7 +5,7 @@ import numpy as np
 import shared.CONSTANTS as CONSTANTS
 from shared.utils import Utils as utils
 from models.coordinate_model import CoordinateModel
-from scripts.gameplay import GamePlay as gameplay
+from src.gameplay import GamePlay as gameplay
 
 class SkynetAI:
     
