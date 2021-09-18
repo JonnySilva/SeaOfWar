@@ -46,6 +46,11 @@ class Messages:
     
     def MESSAGE_FORCE_EXIT():
         print( '\n> Saindo do jogo! \n> Bey Bey (‘▽ `) ノ' )
+        
+    def LINE_HORIZONTAL():
+        txt = "-"
+        x = txt.center(100, "-")
+        print(x)
     # FIM ------------------------------------------
     
     def DRAW_SELECTED_ERROR():

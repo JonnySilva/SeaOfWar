@@ -59,20 +59,14 @@ class Screens:
             grid = None
             
             if players == "A":
-                txt = "-"
-                x = txt.center(100, "-")
-                print(x)
+                MESSAGE.LINE_HORIZONTAL()
                 print( f"\nEsta é a vez do Jogador \33[33m{Screens.player_model.player_name}\033[0m !" )
-                print()
                 grid = Screens.player_skynet.grid
                 Screens.coordinate_model = attacks.insert_attack()
                 print()
             else:
-                txt = "-"
-                x = txt.center(100, "-")
-                print(x)
+                MESSAGE.LINE_HORIZONTAL()
                 print( f"\nEsta é a vez da \33[33mSkyNet\033[0m !" )
-                print()
                 grid = Screens.player_model.grid
                 Screens.coordinate_model = skynet.skynet_attack( grid, skynetCountMoves )
                 skynetCountMoves += 1    

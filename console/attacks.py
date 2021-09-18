@@ -1,6 +1,8 @@
 from models.coordinate_model import CoordinateModel
 from console.gameplay import GamePlay as game_play
 import utils.CONSTANTS as CONSTANTS
+from utils.MESSAGES import Messages as MESSAGE
+
 
 class Attacks:
     
@@ -25,9 +27,7 @@ class Attacks:
             grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] = "*"
             
             print( '\033[94m',"Acertou a água!",'\033[0m' )
-            txt = "-"
-            x = txt.center(100, "-")
-            print(x)
+            MESSAGE.LINE_HORIZONTAL()
             if player == "A":
                 player = "B"
                 return player
@@ -42,7 +42,7 @@ class Attacks:
             grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] = grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x].lower()
             print('\033[92m',"Acertou!",'\033[0m')
             print()
-            
+            MESSAGE.LINE_HORIZONTAL()
             if player == "A":
                 player = "B"
                 return player

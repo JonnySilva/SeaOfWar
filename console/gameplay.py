@@ -152,6 +152,7 @@ class GamePlay:
                 if GamePlay.position_ship( temporary_grid, ship_model, GamePlay.coordinate_model ):
                     GameBoard.draw_game_board( temporary_grid )
                     inserted = GamePlay.position_is_correction( ship_model )
+                    UTILS.clear()
                     if inserted == False:
                         temporary_grid = GameBoard.remove_ship( ship_model.ship_code[0] )
                         print( "\nCoordenada cancelada!\n" )
