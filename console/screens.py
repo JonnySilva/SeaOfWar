@@ -5,8 +5,8 @@ from console.gameplay import GamePlay as gameplay
 from console.skynet import Skynet as skynet
 from console.attacks import Attacks as attacks
 from models.coordinate_model import CoordinateModel
-from models.player_model import PlayerModel
-from models.player_skynet import PlayerSkynet
+from models.players.player_model import PlayerModel
+from models.players.player_skynet import PlayerSkynet
 
 class Screens:
     
