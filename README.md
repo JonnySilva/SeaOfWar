@@ -1,5 +1,7 @@
 # Sea of War
 
+![Menu do Jogo](https://github.com/JonnySilva/battleship-python/blob/RC_2021-09-20_DEV/docs/banner.png)
+
  - **Projeto de Bloco:** Computação e Inteligência Artificial
 
  - **Participantes:** 
