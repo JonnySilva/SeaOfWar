@@ -69,30 +69,30 @@ class GameBoard:
         print()
         
     def draw_life( grid, ships):
-        SHIP_REF = ["A", "B", "C", "P", "S", "S"]
-               
-        for i in range( len( SHIP_REF ) ):
+        SHIP_REFERENCE = ["S", "M", "B", "G", "T", "R"]
+        
+        for i in range( len( SHIP_REFERENCE ) ):
             ships[i] = True
         
         for x in range( CONSTANTS.SIZE ):
             for y in range( CONSTANTS.SIZE ):
-                if grid[y][x] == "A":
+                if grid[y][x] == "S":
                     ships[0] = False
-                if grid[y][x] == "B":
+                if grid[y][x] == "M":
                     ships[1] = False
-                if grid[y][x] == "C":
+                if grid[y][x] == "B":
                     ships[2] = False
-                if grid[y][x] == "P":
+                if grid[y][x] == "G":
                     ships[3] = False
-                if grid[y][x] == "S":
+                if grid[y][x] == "T":
                     ships[4] = False
-                if grid[y][x] == "S":
+                if grid[y][x] == "R":
                     ships[5] = False
         
         print( CONSTANTS.SPACE, end=CONSTANTS.EMPTY )
         
-        for i in range( len( SHIP_REF ) ):
-            print( SHIP_REF[i] + CONSTANTS.SPACE, end=CONSTANTS.EMPTY )
+        for i in range( len( SHIP_REFERENCE ) ):
+            print( SHIP_REFERENCE[i] + CONSTANTS.SPACE, end=CONSTANTS.EMPTY )
             
             if ships[i]:
                 print( "\u2661", end=CONSTANTS.SPACE )
