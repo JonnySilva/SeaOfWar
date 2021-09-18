@@ -43,6 +43,9 @@ class Screens:
     
     # 3. TELA INSERÇÃO DE BARCOS ---------------------
     def screen_insert_ship():
+        Screens.player_model.reset_player_grid()
+        Screens.player_skynet.reset_skynet_grid()
+
         Screens.player_model.grid = gameplay.insert_ship()
         Screens.player_skynet.grid = skynet.generate_board()
         
@@ -76,14 +79,24 @@ class Screens:
             has_winner = gameplay.has_winner()
             
             if has_winner == 2:
-                print( " \033[92m O jogador {Screens.player_model.player_name} ganhou! \033[0m")
-                break
+                print(" \033[92m O jogador {Screens.player_model.player_name} ganhou! \033[0m" )
+            elif has_winner == 1:
+                print( "\033[92m A SkyNet ganhou!\033[0m" )
             
-            if has_winner == 1:
-                print( "\033[92m A SkyNet ganhou!\033[0m")
-                break
-                
-    
+            if has_winner != 0:
+                playagain = MESSAGE.QUESTION_PLAY_AGAIN().upper()
+                while (playagain != "S") and (playagain != "N"):
+                    playagain = MESSAGE.QUESTION_WARNING_COORDINATE().upper()
+                if playagain == "S":
+                    print( "\nComeçando uma nova partida..." )
+                    skynetCountMoves = 0
+                    Screens.screen_insert_ship()
+                    break
+                elif playagain == "N":
+                    Screens.screen_exit()
+                    break               
+
+
     # 0. Sair ----------------------------------------
     def screen_exit():
         option_is_enter = MESSAGE.QUESTION_RETURN_OR_EXIT()
