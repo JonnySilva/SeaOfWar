@@ -7,6 +7,16 @@ class PlayerSkynet:
         
         self._player_name = player_name
         self._grid = grid
+
+    def reset_skynet_grid( self ):
+        CONSTANTS.GRID_IA = [
+                [
+                    CONSTANTS.SPACE for coordinate_y in range( len( CONSTANTS.GRID_SIZE ) )
+                ]
+                
+                for coordinate_x in range( len( CONSTANTS.GRID_SIZE ) )
+            ]
+        self._grid = CONSTANTS.GRID_IA
     
     @property
     def player_name( self ):
