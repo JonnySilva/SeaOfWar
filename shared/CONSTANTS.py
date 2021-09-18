@@ -1,9 +1,9 @@
-from models.aircraft_carrier_model import AircraftCarrierModel as aircraft_carrier
-from models.battleship_model import BattleshipModel as battleship
-from models.crusier_model import CruiserModel as cruiser
-from models.patrol_ship_model import PatrolShipModel as patrol_ship
-from models.submarine_t_model import SubmarineTModel as submarine_t
-from models.submarine_r_model import SubmarineRModel as submarine_r
+from models.ships.aircraft_carrier_model import AircraftCarrierModel as aircraft_carrier
+from models.ships.battleship_model import BattleshipModel as battleship
+from models.ships.crusier_model import CruiserModel as cruiser
+from models.ships.patrol_ship_model import PatrolShipModel as patrol_ship
+from models.ships.submarine_t_model import SubmarineTModel as submarine_t
+from models.ships.submarine_r_model import SubmarineRModel as submarine_r
 
 SPACE = ' '
 EMPTY = ''

@@ -1,4 +1,4 @@
-import utils.CONSTANTS as CONSTANTS
+import shared.CONSTANTS as CONSTANTS
 
 class PlayerSkynet:
     

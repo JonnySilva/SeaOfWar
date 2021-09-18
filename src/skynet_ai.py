@@ -2,12 +2,13 @@ import random
 import pandas as pd
 import numpy as np
 
-import utils.CONSTANTS as CONSTANTS
-from utils.utils import Utils as utils
+import shared.CONSTANTS as CONSTANTS
+from shared.utils import Utils as utils
 from models.coordinate_model import CoordinateModel
-from console.gameplay import GamePlay as gameplay
+from src.gameplay import GamePlay as gameplay
+from shared.MESSAGES import Messages as MESSAGE
 
-class Skynet:
+class SkynetAI:
     
     coordinate_model = CoordinateModel()
     skynet_coordinate_x = []
@@ -15,25 +16,25 @@ class Skynet:
 
     def generate_board():
         for ship_model in CONSTANTS.LIST_OF_SHIP_MODELS:
-            Skynet.random_insertion( CONSTANTS.GRID_IA, ship_model )
+            SkynetAI.random_insertion( CONSTANTS.GRID_IA, ship_model )
             
         return CONSTANTS.GRID_IA
     
     def random_insertion( grid, ship_model ):
         inserted = False
-        Skynet.coordinate_model.reset()
+        SkynetAI.coordinate_model.reset()
         
         while not inserted:
-            Skynet.coordinate_model.coordinate_x = random.randint( 0, 9 )
-            Skynet.coordinate_model.coordinate_y = random.randint( 0, 9 )
-            Skynet.coordinate_model.position = random.randint( 0, 1 )
+            SkynetAI.coordinate_model.coordinate_x = random.randint( 0, 9 )
+            SkynetAI.coordinate_model.coordinate_y = random.randint( 0, 9 )
+            SkynetAI.coordinate_model.position = random.randint( 0, 1 )
             
-            if Skynet.coordinate_model.position == 0:
-                Skynet.coordinate_model.position = "V"
+            if SkynetAI.coordinate_model.position == 0:
+                SkynetAI.coordinate_model.position = "V"
             else:
-                Skynet.coordinate_model.position = "H"
+                SkynetAI.coordinate_model.position = "H"
             
-            inserted = gameplay.position_ship( grid, ship_model, Skynet.coordinate_model, False)
+            inserted = gameplay.position_ship( grid, ship_model, SkynetAI.coordinate_model, False)
 
     # Genetic Algorithm Section ---------------------
     def random_generation(generation_size, genes):
@@ -204,28 +205,28 @@ class Skynet:
         # create generations until fitness criteria is achieved
         while gene_pool[CONSTANTS.CONST_FITNESS].max() < stop_limit:          
             # select elites with elite rate
-            next_generation = Skynet.select_elites(next_generation)
+            next_generation = SkynetAI.select_elites(next_generation)
 
             # add splice pairs to generation
             splice_pair_rate = elite_rate / 2
             n_splice_pairs = int(splice_pair_rate * generation_size)
-            next_generation = Skynet.create_splices(next_generation, n_splice_pairs)
+            next_generation = SkynetAI.create_splices(next_generation, n_splice_pairs)
 
             # add mutants to generation
             mutant_rate = 0.60
             bit_flip_rate = 0.01
             n_mutants = int(mutant_rate * generation_size)
-            next_generation = Skynet.create_mutants(next_generation, n_mutants, bit_flip_rate)
+            next_generation = SkynetAI.create_mutants(next_generation, n_mutants, bit_flip_rate)
 
             # fill the rest of the generation with random chromosomes for diversity
-            next_generation = Skynet.fill_random(next_generation, generation_size, 100)
+            next_generation = SkynetAI.fill_random(next_generation, generation_size, 100)
 
             # compare fitness
-            next_generation[CONSTANTS.CONST_FITNESS] = next_generation.apply(lambda row: Skynet.accuracy(row.Chromosome, solution), axis=1)
+            next_generation[CONSTANTS.CONST_FITNESS] = next_generation.apply(lambda row: SkynetAI.accuracy(row.Chromosome, solution), axis=1)
 
             # assign elites with elite rate
             elite_rate = 0.20
-            next_generation = Skynet.assign_elites(next_generation, elite_rate)
+            next_generation = SkynetAI.assign_elites(next_generation, elite_rate)
             next_generation
 
             # add generation to gene pool
@@ -245,28 +246,28 @@ class Skynet:
 
     def solve(solution, generation_size):
         # initialize the first random generation
-        gene_pool = Skynet.random_generation(generation_size, 100)
+        gene_pool = SkynetAI.random_generation(generation_size, 100)
 
         # compare fitness
-        gene_pool[CONSTANTS.CONST_FITNESS] = gene_pool.apply(lambda row: Skynet.accuracy(row.Chromosome, solution), axis=1)
+        gene_pool[CONSTANTS.CONST_FITNESS] = gene_pool.apply(lambda row: SkynetAI.accuracy(row.Chromosome, solution), axis=1)
 
         # assign elites with elite rate
         elite_rate = 0.20
-        gene_pool = Skynet.assign_elites(gene_pool, elite_rate)
+        gene_pool = SkynetAI.assign_elites(gene_pool, elite_rate)
 
         # create successive generations until termination criteria is met
-        gene_pool = Skynet.create_descendents(gene_pool, elite_rate, solution, 1.0)
+        gene_pool = SkynetAI.create_descendents(gene_pool, elite_rate, solution, 1.0)
         gene_pool = gene_pool.set_index(CONSTANTS.CONST_SEQUENCE)
         
         return gene_pool
 
     def skynet_attack( grid, skynetCountMoves ):
         if skynetCountMoves == 0:
-            print( f"\nA SkyNet está criando uma estratégia para ganhar de você", end=CONSTANTS.EMPTY )
+            MESSAGE.MESSAGE_SKYNET_THINKING()
             gridConvertedToSolution = utils.convert_grid_to_skynet_solution( grid )            
             genetic_solution = ( '' ).join( str( x ) for x in list( gridConvertedToSolution.flatten() ) )
 
-            gene_pool = Skynet.solve( genetic_solution, 10 )
+            gene_pool = SkynetAI.solve( genetic_solution, 10 )
             gene_filtered = gene_pool.loc[gene_pool.Fitness.idxmax()]
             
             utils.draw_points()
@@ -275,17 +276,17 @@ class Skynet:
             geneArrayReshaped = np.reshape( geneArrayReturned, ( 10, 10 ) )
             
             ship_positions = np.where( geneArrayReshaped == 1 )
-            Skynet.skynet_coordinate_x = ship_positions[1]
-            Skynet.skynet_coordinate_y = ship_positions[0]
-            Skynet.skynet_coordinate()
+            SkynetAI.skynet_coordinate_x = ship_positions[1]
+            SkynetAI.skynet_coordinate_y = ship_positions[0]
+            SkynetAI.skynet_coordinate()
         else:
-            Skynet.skynet_coordinate()
-        return Skynet.coordinate_model
+            SkynetAI.skynet_coordinate()
+        return SkynetAI.coordinate_model
     
     def skynet_coordinate():
-        Skynet.coordinate_model.coordinate_x = Skynet.skynet_coordinate_x[0]
-        Skynet.coordinate_model.coordinate_y = Skynet.skynet_coordinate_y[0]
-        Skynet.skynet_coordinate_x = np.delete(Skynet.skynet_coordinate_x, (0))
-        Skynet.skynet_coordinate_y = np.delete(Skynet.skynet_coordinate_y, (0))
+        SkynetAI.coordinate_model.coordinate_x = SkynetAI.skynet_coordinate_x[0]
+        SkynetAI.coordinate_model.coordinate_y = SkynetAI.skynet_coordinate_y[0]
+        SkynetAI.skynet_coordinate_x = np.delete(SkynetAI.skynet_coordinate_x, (0))
+        SkynetAI.skynet_coordinate_y = np.delete(SkynetAI.skynet_coordinate_y, (0))
 
     

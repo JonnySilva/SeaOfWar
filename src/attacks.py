@@ -1,8 +1,7 @@
 from models.coordinate_model import CoordinateModel
-from console.gameplay import GamePlay as game_play
-import utils.CONSTANTS as CONSTANTS
-from utils.MESSAGES import Messages as MESSAGE
-
+from src.gameplay import GamePlay as game_play
+import shared.CONSTANTS as CONSTANTS
+from shared.MESSAGES import Messages as MESSAGE
 
 class Attacks:
     
@@ -24,10 +23,11 @@ class Attacks:
             return player
         
         if grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] == " ":
-            grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] = "*"
+            grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] = "\033[94mX\033[0m"
             
-            print( '\033[94m',"Acertou a água!",'\033[0m' )
+            MESSAGE.MESSAGE_HIT_WATTER()
             MESSAGE.LINE_HORIZONTAL()
+            
             if player == "A":
                 player = "B"
                 return player
@@ -35,14 +35,15 @@ class Attacks:
                 player = "A"
                 return player
         
-        elif grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x].islower() or grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] == "*":
+        elif grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x].islower() or grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] == "\033[94mX\033[0m":
            return player
         
         else:
             grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] = grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x].lower()
-            print('\033[92m',"Acertou!",'\033[0m')
-            print()
+            
+            MESSAGE.MESSAGE_HIT_SHIP()
             MESSAGE.LINE_HORIZONTAL()
+            
             if player == "A":
                 player = "B"
                 return player

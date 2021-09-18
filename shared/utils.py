@@ -2,8 +2,8 @@ import os
 import sys
 import numpy as np
 from time import sleep
-from utils.MESSAGES import Messages as MESSAGE
-import console.screens as screen
+from shared.MESSAGES import Messages as MESSAGE
+import src.screens as screen
 
 class Utils:
     
@@ -47,13 +47,13 @@ class Utils:
         option = option_selected.lower()
         
         if option == '':
-            MESSAGE.DRAW_SELECTED_ERROR()
+            MESSAGE.MESSAGE_INVALID_SELECTED()
             Utils.return_menu()
         else:
             try:
                 screen.options_menu[option]()
             except KeyError:
-                MESSAGE.DRAW_SELECTED_ERROR()
+                MESSAGE.MESSAGE_INVALID_SELECTED()
                 Utils.return_menu()
     
     def letter_to_column_number( letter ):
@@ -84,8 +84,7 @@ class Utils:
         desired_array5 = np.asarray([[j.replace('G', '1') for j in i] for i in desired_array4])
         desired_array6 = np.asarray([[j.replace('T', '1') for j in i] for i in desired_array5])
         desired_array = np.asarray([[j.replace('R', '1') for j in i] for i in desired_array6])
-
-
+        
         desired_arrayInt = desired_array.astype(np.int)
 
         return desired_arrayInt
