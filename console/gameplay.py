@@ -2,7 +2,7 @@ from shared.utils import Utils as UTILS
 from shared.MESSAGES import Messages as MESSAGES
 import shared.CONSTANTS as CONSTANTS
 
-from console.game_board import GameBoard as GameBoard
+from lib.game_board import GameBoard as GameBoard
 
 from models.coordinate_model import CoordinateModel
 from models.ships.submarine_t_model import SubmarineTModel as submarine_t

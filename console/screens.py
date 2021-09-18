@@ -1,6 +1,6 @@
 from shared.MESSAGES import Messages as MESSAGE
 from shared.utils import Utils as UTILS
-from console.game_board import GameBoard as GAME_BOARD
+from lib.game_board import GameBoard as GAME_BOARD
 from console.gameplay import GamePlay as gameplay
 from console.skynet import Skynet as skynet
 from console.attacks import Attacks as attacks
