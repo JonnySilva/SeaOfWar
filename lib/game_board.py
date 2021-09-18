@@ -95,20 +95,20 @@ class GameBoard:
             print( SHIP_REFERENCE[i] + CONSTANTS.SPACE, end=CONSTANTS.EMPTY )
             
             if ships[i]:
-                print( "\u2661", end=CONSTANTS.SPACE )
+                print( "\033[0m\u2665\033[0m", end=CONSTANTS.SPACE )
             else:
-                print( "\u2665", end=CONSTANTS.SPACE )
+                print( "\33[31m\u2665\033[0m", end=CONSTANTS.SPACE )
                 
         print()
     
     def invisible_board( grid ):
         for coordinat_y in range( len( grid ) ):
             for coordinate_x in range( len( grid[coordinat_y] ) ):
-                if grid[coordinat_y][coordinate_x] == "*":
-                    CONSTANTS.PUBLIC_GRID[coordinat_y][coordinate_x] = "*"
+                if grid[coordinat_y][coordinate_x] == "\033[94mX\033[0m":
+                    CONSTANTS.PUBLIC_GRID[coordinat_y][coordinate_x] = "\033[94mX\033[0m"
                 
                 elif grid[coordinat_y][coordinate_x].islower():
-                    CONSTANTS.PUBLIC_GRID[coordinat_y][coordinate_x] = "o"
+                    CONSTANTS.PUBLIC_GRID[coordinat_y][coordinate_x] = "\33[31mO\033[0m"
                 
                 else:
                     CONSTANTS.PUBLIC_GRID[coordinat_y][coordinate_x] = " "

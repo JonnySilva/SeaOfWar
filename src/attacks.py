@@ -23,7 +23,7 @@ class Attacks:
             return player
         
         if grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] == " ":
-            grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] = "*"
+            grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] = "\033[94mX\033[0m"
             
             MESSAGE.MESSAGE_HIT_WATTER()
             MESSAGE.LINE_HORIZONTAL()
@@ -35,7 +35,7 @@ class Attacks:
                 player = "A"
                 return player
         
-        elif grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x].islower() or grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] == "*":
+        elif grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x].islower() or grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] == "\033[94mX\033[0m":
            return player
         
         else:
