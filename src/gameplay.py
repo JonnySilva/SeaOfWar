@@ -129,6 +129,7 @@ class GamePlay:
             option = MESSAGES.QUESTION_WARNING_COORDINATE().upper()
         
         if option == "N":
+            MESSAGES.MESSAGE_WARNING_CANCEL_COORDINATE()
             return False
         else: 
             return True
@@ -144,7 +145,6 @@ class GamePlay:
                 GamePlay.coordinate_model.reset()
                 
                 GameBoard.draw_game_board( CONSTANTS.GRID_GAME_BOARD )
-                
                 GamePlay.coordinate_model = GamePlay.insert_coordinate( GamePlay.coordinate_model, ship_model )
                 
                 if ship_model.ship_code != submarine_r_model.ship_code and ship_model.ship_code != submarine_t_model.ship_code:
