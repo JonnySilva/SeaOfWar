@@ -26,6 +26,9 @@ class Utils:
         elif exit_or_loading == 1:
             MESSAGE.MESSAGE_RETURN_MENU()
             
+        Utils.draw_points()
+        
+    def draw_points():
         secconds = 0
         
         while secconds < 3:
