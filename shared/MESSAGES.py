@@ -2,8 +2,11 @@ import shared.CONSTANTS as CONSTANTS
 
 class Messages:
     
+    def DRAW_LINE( amout ):
+        return CONSTANTS.CONST_LINE * amout
+    
     def DRAW_MENU():
-        LINE = CONSTANTS.CONST_LINE * 51
+        LINE = Messages.DRAW_LINE( 51 )
         
         print( f'''
               
@@ -71,42 +74,45 @@ class Messages:
               ''' )
     
     def DRAW_GAME_RULES():
-        print( '''
-                    *******************************************************************************
-                    * Batalha naval é um jogo de tabuleiro (10x10) de dois jogadores, no qual os  *
-                    * jogadores têm de adivinhar em que quadrados estão os navios do oponente.    *
-                    *                                                                             *
-                    * Antes do início do jogo, cada jogador coloca os seus navios nos quadros,    *
-                    * alinhados horizontalmente ou verticalmente.                                 *
-                    *                                                                             *
-                    * O número de navios permitidos é igual para ambos jogadores, os navios não   *
-                    * podem se sobrepor e devem ter espaçamento de, no mínimo, um quadrado.       *
-                    *                                                                             *
-                    * Após os navios terem sido posicionados o jogo continua numa série de turnos.*
-                    * Em cada turno, um jogador seleciona um quadrado, o qual é identificado pela *
-                    * letra e número, no tauleiro do oponente, se houver um navio nesse quadrado, *
-                    * é colocada uma marca vermelha, senão houver é colocada uma marca branca.    *
-                    *                                                                             *
-                    * Os tipos de navios são:                                                     *
-                    *  # Porta-aviões (cinco quadrados)                                           *
-                    *  # Encouraçado (quatro quadrados)                                           *
-                    *  # Contratorpedeiros (três quadrados)                                       *
-                    *  # Navio-patrulha (dois quadrados)                                          *
-                    *  # Submarinos (um quadrado)                                                 *
-                    *                                                                             *
-                    * Vale notar que os quadrados que compõem um navio devem estar conectados     *
-                    * e em fila reta.                                                             *
-                    *******************************************************************************
-                    * Regras retiradas do site Wikipédia, link abaixo:                            *
-                    *  # https://pt.wikipedia.org/wiki/Batalha_naval_(jogo)                       *
-                    *******************************************************************************
+        LINE = Messages.DRAW_LINE( 79 )
+        
+        print( f'''
+                    {CONSTANTS.CONST_CORNER_TOP_LEFT}{LINE}{CONSTANTS.CONST_CORNER_TOP_RIGHT}
+                    {CONSTANTS.CONST_MID_SEPARATOR}  Batalha naval é um jogo de tabuleiro (10x10) de dois jogadores, no qual os   {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}  jogadores têm de adivinhar em que quadrados estão os navios do oponente.     {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}                                                                               {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}  Antes do início do jogo, cada jogador coloca os seus navios nos quadros,     {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}  alinhados horizontalmente ou verticalmente.                                  {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}                                                                               {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}  O número de navios permitidos é igual para ambos jogadores, os navios não    {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}  podem se sobrepor e devem ter espaçamento de, no mínimo, um quadrado.        {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}                                                                               {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}  Após os navios terem sido posicionados o jogo continua numa série de turnos. {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}  Em cada turno, um jogador seleciona um quadrado, o qual é identificado pela  {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}  letra e número, no tauleiro do oponente, se houver um navio nesse quadrado,  {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}  é colocada uma marca vermelha, senão houver é colocada uma marca branca.     {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}                                                                               {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}  Os tipos de navios são:                                                      {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}   # Porta-aviões (cinco quadrados)                                            {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}   # Encouraçado (quatro quadrados)                                            {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}   # Contratorpedeiros (três quadrados)                                        {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}   # Navio-patrulha (dois quadrados)                                           {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}   # Submarinos (um quadrado)                                                  {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}                                                                               {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}  Vale notar que os quadrados que compõem um navio devem estar conectados      {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}  e em fila reta.                                                              {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_COLUMN_LEFT}{LINE}{CONSTANTS.CONST_COLUMN_RIGHT}
+                    {CONSTANTS.CONST_MID_SEPARATOR}  Regras retiradas do site Wikipédia, link abaixo:                             {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_MID_SEPARATOR}   # https://pt.wikipedia.org/wiki/Batalha_naval_(jogo)                        {CONSTANTS.CONST_MID_SEPARATOR}
+                    {CONSTANTS.CONST_CORNER_BOTTOM_LEFT}{LINE}{CONSTANTS.CONST_CORNER_BOTTOM_RIGHT}
               ''' )
     
     def DRAW_TITLE_GAME_RULES():
-        print( '''
-                                             Regras do Jogo - Batalha Naval
-                                          ------------------------------------
-              ''' )
+        LINE = Messages.DRAW_LINE( 36 )
+        
+        print( f'''
+                                              Regras do Jogo - Batalha Naval
+                                          {CONSTANTS.CONST_CORNER_BOTTOM_LEFT}{LINE}{CONSTANTS.CONST_CORNER_BOTTOM_RIGHT}''' )
     
     # MENSAGENS DE SELEÇÃO --------------------------------------------------------
     def OPTION_SELECTED():
