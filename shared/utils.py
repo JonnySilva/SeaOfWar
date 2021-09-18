@@ -2,7 +2,7 @@ import os
 import sys
 import numpy as np
 from time import sleep
-from utils.MESSAGES import Messages as MESSAGE
+from shared.MESSAGES import Messages as MESSAGE
 import console.screens as screen
 
 class Utils:
