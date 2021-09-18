@@ -5,8 +5,8 @@ import utils.CONSTANTS as CONSTANTS
 from console.game_board import GameBoard as GameBoard
 
 from models.coordinate_model import CoordinateModel
-from models.submarine_t_model import SubmarineTModel as submarine_t
-from models.submarine_r_model import SubmarineRModel as submarine_r
+from models.ships.submarine_t_model import SubmarineTModel as submarine_t
+from models.ships.submarine_r_model import SubmarineRModel as submarine_r
 
 class GamePlay:
     
