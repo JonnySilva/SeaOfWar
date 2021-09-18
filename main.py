@@ -1,6 +1,6 @@
 import sys
 from shared.MESSAGES import Messages as MESSAGE
-from console.screens import Screens as screen
+from scripts.screens import Screens as screen
 
 def main():
     screen.menu()
