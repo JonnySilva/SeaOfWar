@@ -88,13 +88,19 @@ class GamePlay:
     
     def insert_coordinate( coordinate_model, ship_model=None ):
         while coordinate_model.coordinate_x < 0 or coordinate_model.coordinate_y < 0 or coordinate_model.coordinate_x > CONSTANTS.SIZE or coordinate_model.coordinate_y > CONSTANTS.SIZE:
-            if ship_model != None:
-                ship_name = ship_model.ship_name
-                ship_size = ship_model.ship_size
+            coordinate = ''
+            length = len( coordinate )
+            
+            while ( coordinate == '' ) or ( length < 2 ) or ( length > 2 ):
+                if ship_model != None:
+                    ship_name = ship_model.ship_name
+                    ship_size = ship_model.ship_size
+                    
+                    coordinate = MESSAGES.QUESTION_COORDINATE( ship_name, ship_size )
+                else:
+                    coordinate = MESSAGES.QUESTION_ATTACK()
                 
-                coordinate = MESSAGES.QUESTION_COORDINATE( ship_name, ship_size )
-            else:
-                coordinate = MESSAGES.QUESTION_ATTACK()
+                length = len( coordinate )
                 
             try:
                 coordinate_model.coordinate_x = int( coordinate[0] ) if UTILS.coordinate_is_digit( coordinate[0] ) else int( UTILS.letter_to_column_number( coordinate[0].upper() ) )
@@ -138,6 +144,7 @@ class GamePlay:
                 GamePlay.coordinate_model.reset()
                 
                 GameBoard.draw_game_board( CONSTANTS.GRID_GAME_BOARD )
+                
                 GamePlay.coordinate_model = GamePlay.insert_coordinate( GamePlay.coordinate_model, ship_model )
                 
                 if ship_model.ship_code != submarine_r_model.ship_code and ship_model.ship_code != submarine_t_model.ship_code:
