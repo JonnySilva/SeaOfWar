@@ -3,8 +3,8 @@ class BattleshipModel( object ):
     def __init__( self ):
         super().__init__()
         
-        self._ship_name = "Encouraçado"
-        self._ship_code = "BATTLESHIP"
+        self._ship_name = "Encouraçado Minas Geraes"
+        self._ship_code = "MINAS_GERAES"
         self._ship_size = 4
     
     # Gets ---------------------------------
