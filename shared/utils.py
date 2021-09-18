@@ -3,7 +3,7 @@ import sys
 import numpy as np
 from time import sleep
 from shared.MESSAGES import Messages as MESSAGE
-import scripts.screens as screen
+import src.screens as screen
 
 class Utils:
     
