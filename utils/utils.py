@@ -78,11 +78,13 @@ class Utils:
     def convert_grid_to_skynet_solution(grid):
         gridArray = np.asarray(grid)
         desired_array1 = np.asarray([[j.replace(' ', '0') for j in i] for i in gridArray])
-        desired_array2 = np.asarray([[j.replace('A', '1') for j in i] for i in desired_array1])
-        desired_array3 = np.asarray([[j.replace('B', '1') for j in i] for i in desired_array2])
-        desired_array4 = np.asarray([[j.replace('C', '1') for j in i] for i in desired_array3])
-        desired_array5 = np.asarray([[j.replace('P', '1') for j in i] for i in desired_array4])
-        desired_array = np.asarray([[j.replace('S', '1') for j in i] for i in desired_array5])
+        desired_array2 = np.asarray([[j.replace('S', '1') for j in i] for i in desired_array1])
+        desired_array3 = np.asarray([[j.replace('M', '1') for j in i] for i in desired_array2])
+        desired_array4 = np.asarray([[j.replace('B', '1') for j in i] for i in desired_array3])
+        desired_array5 = np.asarray([[j.replace('G', '1') for j in i] for i in desired_array4])
+        desired_array6 = np.asarray([[j.replace('T', '1') for j in i] for i in desired_array5])
+        desired_array = np.asarray([[j.replace('R', '1') for j in i] for i in desired_array6])
+
 
         desired_arrayInt = desired_array.astype(np.int)
 
