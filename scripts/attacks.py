@@ -1,5 +1,5 @@
 from models.coordinate_model import CoordinateModel
-from console.gameplay import GamePlay as game_play
+from scripts.gameplay import GamePlay as game_play
 import shared.CONSTANTS as CONSTANTS
 from shared.MESSAGES import Messages as MESSAGE
 
