@@ -2,8 +2,8 @@ from models.aircraft_carrier_model import AircraftCarrierModel as aircraft_carri
 from models.battleship_model import BattleshipModel as battleship
 from models.crusier_model import CruiserModel as cruiser
 from models.patrol_ship_model import PatrolShipModel as patrol_ship
-from models.submarina_a_model import SubmarineAModel as submarine_a
-from models.submarine_b_model import SubmarineBModel as submarine_b
+from models.submarine_t_model import SubmarineTModel as submarine_t
+from models.submarine_r_model import SubmarineRModel as submarine_r
 
 SPACE = ' '
 EMPTY = ''
@@ -67,8 +67,8 @@ LIST_OF_SHIP_MODELS = [
     battleship(),
     cruiser(),
     patrol_ship(),
-    submarine_a(),
-    submarine_b()
+    submarine_t(),
+    submarine_r()
     
 ]
 # --------------------------------------------

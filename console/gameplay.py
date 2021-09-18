@@ -5,8 +5,8 @@ import utils.CONSTANTS as CONSTANTS
 from console.game_board import GameBoard as GameBoard
 
 from models.coordinate_model import CoordinateModel
-from models.submarina_a_model import SubmarineAModel as submarine_a
-from models.submarine_b_model import SubmarineBModel as submarine_b
+from models.submarine_t_model import SubmarineTModel as submarine_t
+from models.submarine_r_model import SubmarineRModel as submarine_r
 
 class GamePlay:
     
@@ -95,7 +95,6 @@ class GamePlay:
                 
                 coordinate = MESSAGES.QUESTION_COORDINATE( ship_name, ship_size )
             else:
-                print()
                 coordinate = MESSAGES.QUESTION_ATTACK()
                 
             try:
@@ -136,15 +135,14 @@ class GamePlay:
             UTILS.clear()
             
             while not inserted:
-                submarine_a_model = submarine_a()
-                submarine_b_model = submarine_b()
+                submarine_t_model = submarine_t()
+                submarine_r_model = submarine_r()
                 GamePlay.coordinate_model.reset()
                 
                 GameBoard.draw_game_board( CONSTANTS.GRID_GAME_BOARD )
                 GamePlay.coordinate_model = GamePlay.insert_coordinate( GamePlay.coordinate_model, ship_model )
                 
-                if ship_model.ship_code != submarine_b_model.ship_code and ship_model.ship_code != submarine_a_model.ship_code:
-                    print()
+                if ship_model.ship_code != submarine_r_model.ship_code and ship_model.ship_code != submarine_t_model.ship_code:
                     GamePlay.coordinate_model.position = GamePlay.vertical_or_horizontal().upper()
                 UTILS.clear()
                 temporary_grid = CONSTANTS.GRID_GAME_BOARD
