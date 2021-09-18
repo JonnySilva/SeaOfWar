@@ -24,7 +24,10 @@ class Attacks:
         if grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] == " ":
             grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] = "*"
             
-            print( "Acertou a água!" )
+            print( '\033[94m',"Acertou a água!",'\033[0m' )
+            txt = "-"
+            x = txt.center(100, "-")
+            print(x)
             if player == "A":
                 player = "B"
                 return player
@@ -37,7 +40,8 @@ class Attacks:
         
         else:
             grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] = grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x].lower()
-            print( "Acertou!" )
+            print('\033[92m',"Acertou!",'\033[0m')
+            print()
             
             if player == "A":
                 player = "B"
