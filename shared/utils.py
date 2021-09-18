@@ -47,13 +47,13 @@ class Utils:
         option = option_selected.lower()
         
         if option == '':
-            MESSAGE.DRAW_SELECTED_ERROR()
+            MESSAGE.MESSAGE_INVALID_SELECTED()
             Utils.return_menu()
         else:
             try:
                 screen.options_menu[option]()
             except KeyError:
-                MESSAGE.DRAW_SELECTED_ERROR()
+                MESSAGE.MESSAGE_INVALID_SELECTED()
                 Utils.return_menu()
     
     def letter_to_column_number( letter ):

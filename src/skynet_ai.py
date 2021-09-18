@@ -6,6 +6,7 @@ import shared.CONSTANTS as CONSTANTS
 from shared.utils import Utils as utils
 from models.coordinate_model import CoordinateModel
 from src.gameplay import GamePlay as gameplay
+from shared.MESSAGES import Messages as MESSAGE
 
 class SkynetAI:
     
@@ -262,7 +263,7 @@ class SkynetAI:
 
     def skynet_attack( grid, skynetCountMoves ):
         if skynetCountMoves == 0:
-            print( f"\nA SkyNet está criando uma estratégia para ganhar de você", end=CONSTANTS.EMPTY )
+            MESSAGE.MESSAGE_SKYNET_THINKING()
             gridConvertedToSolution = utils.convert_grid_to_skynet_solution( grid )            
             genetic_solution = ( '' ).join( str( x ) for x in list( gridConvertedToSolution.flatten() ) )
 

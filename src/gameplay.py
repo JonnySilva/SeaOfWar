@@ -66,7 +66,6 @@ class GamePlay:
     def position_ship( grid, ship_model, coordinate_model, verbose=True ):
         if coordinate_model.position == "V":
             if not GamePlay.valid_coordinates( grid, coordinate_model.coordinate_y, ( coordinate_model.coordinate_y + ship_model.ship_size - 1 ), coordinate_model.coordinate_x, coordinate_model.coordinate_x, verbose ):
-                # print( f"\t\t ADD: {ship_size}" )
                 for i in range( ship_model.ship_size ):
                     grid[coordinate_model.coordinate_y + i][coordinate_model.coordinate_x] = ship_model.ship_code[0]
                 return True
@@ -124,7 +123,6 @@ class GamePlay:
             option = MESSAGES.QUESTION_WARNING_COORDINATE().upper()
         
         if option == "N":
-            MESSAGES.MESSAGE_WARNING_CANCEL_COORDINATE()
             return False
         else: 
             return True
@@ -153,7 +151,7 @@ class GamePlay:
                     UTILS.clear()
                     if inserted == False:
                         temporary_grid = GameBoard.remove_ship( ship_model.ship_code[0] )
-                        print( "\nCoordenada cancelada!\n" )
+                        MESSAGES.MESSAGE_WARNING_CANCEL_COORDINATE()
                     
         return temporary_grid
     

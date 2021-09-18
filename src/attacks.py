@@ -3,7 +3,6 @@ from src.gameplay import GamePlay as game_play
 import shared.CONSTANTS as CONSTANTS
 from shared.MESSAGES import Messages as MESSAGE
 
-
 class Attacks:
     
     coordinate_model = CoordinateModel()
@@ -26,8 +25,9 @@ class Attacks:
         if grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] == " ":
             grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] = "*"
             
-            print( '\033[94m',"Acertou a água!",'\033[0m' )
+            MESSAGE.MESSAGE_HIT_WATTER()
             MESSAGE.LINE_HORIZONTAL()
+            
             if player == "A":
                 player = "B"
                 return player
@@ -40,9 +40,10 @@ class Attacks:
         
         else:
             grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x] = grid[coordinate_model.coordinate_y][coordinate_model.coordinate_x].lower()
-            print('\033[92m',"Acertou!",'\033[0m')
-            print()
+            
+            MESSAGE.MESSAGE_HIT_SHIP()
             MESSAGE.LINE_HORIZONTAL()
+            
             if player == "A":
                 player = "B"
                 return player

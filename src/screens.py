@@ -17,14 +17,14 @@ class Screens:
     def menu():
         UTILS.clear()
         MESSAGE.DRAW_MENU()
-        option_selected = MESSAGE.OPTION_SELECTED()
+        option_selected = MESSAGE.QUESTION_SELECTED()
         UTILS.targeting( option_selected )
         return
     
     # 1. TELA NOME DO JOGADOR ------------------------
     def screen_create_player():
         while Screens.player_model.player_name == '':
-            Screens.player_model.player_name = MESSAGE.DRAW_INSERT_NAME()
+            Screens.player_model.player_name = MESSAGE.QUESTION_NAME()
             
             if Screens.player_model.player_name == '':
                 UTILS.clear()
@@ -63,13 +63,15 @@ class Screens:
             
             if players == "A":
                 MESSAGE.LINE_HORIZONTAL()
-                print( f"\nEsta é a vez do Jogador \33[33m{Screens.player_model.player_name}\033[0m !" )
+                MESSAGE.MESSAGE_ATTACK_PLAYER( Screens.player_model.player_name )
+                
                 grid = Screens.player_skynet.grid
                 Screens.coordinate_model = attacks.insert_attack()
                 print()
             else:
                 MESSAGE.LINE_HORIZONTAL()
-                print( f"\nEsta é a vez da \33[33mSkyNet\033[0m !" )
+                MESSAGE.MESSAGE_ATTACK_SKYNET()
+                
                 grid = Screens.player_model.grid
                 Screens.coordinate_model = skynet.skynet_attack( grid, skynetCountMoves )
                 skynetCountMoves += 1    
@@ -79,9 +81,9 @@ class Screens:
             has_winner = gameplay.has_winner()
             
             if has_winner == 2:
-                print(" \033[92m O jogador {Screens.player_model.player_name} ganhou! \033[0m" )
+                MESSAGE.MESSAGE_WINNER( Screens.player_model.player_name )
             elif has_winner == 1:
-                print( "\033[92m A SkyNet ganhou!\033[0m" )
+                MESSAGE.MESSAGE_WINNER( 'SkyNet' )
             
             if has_winner != 0:
                 playagain = MESSAGE.QUESTION_PLAY_AGAIN().upper()
