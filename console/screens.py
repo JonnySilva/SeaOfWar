@@ -62,11 +62,14 @@ class Screens:
             grid = None
             
             if players == "A":
-                print( f"\nEsta é a vez do Jogador {Screens.player_model.player_name}!" )
+                MESSAGE.LINE_HORIZONTAL()
+                print( f"\nEsta é a vez do Jogador \33[33m{Screens.player_model.player_name}\033[0m !" )
                 grid = Screens.player_skynet.grid
                 Screens.coordinate_model = attacks.insert_attack()
+                print()
             else:
-                print( f"\nEsta é a vez da SkyNet!" )
+                MESSAGE.LINE_HORIZONTAL()
+                print( f"\nEsta é a vez da \33[33mSkyNet\033[0m !" )
                 grid = Screens.player_model.grid
                 Screens.coordinate_model = skynet.skynet_attack( grid, skynetCountMoves )
                 skynetCountMoves += 1    
@@ -76,9 +79,9 @@ class Screens:
             has_winner = gameplay.has_winner()
             
             if has_winner == 2:
-                print( f"\nO jogador {Screens.player_model.player_name} ganhou!" )
+                print(" \033[92m O jogador {Screens.player_model.player_name} ganhou! \033[0m" )
             elif has_winner == 1:
-                print( f"\nA SkyNet ganhou!" )
+                print( "\033[92m A SkyNet ganhou!\033[0m" )
             
             if has_winner != 0:
                 playagain = MESSAGE.QUESTION_PLAY_AGAIN().upper()

@@ -46,7 +46,11 @@ class Messages:
     
     def MESSAGE_FORCE_EXIT():
         print( '\n> Saindo do jogo! \n> Bey Bey (‘▽ `) ノ' )
-    
+        
+    def LINE_HORIZONTAL():
+        txt = "-"
+        x = txt.center(100, "-")
+        print(x)
     # FIM ------------------------------------------
     
     def DRAW_SELECTED_ERROR():
@@ -122,12 +126,12 @@ Digite a coordenada que deseja colocar o {ship_name} ({ship_size} casas):
 > ''' )
     
     def QUESTION_ATTACK():
-        return input( 'Qual a coordenada do ataque?' )
+        return input( '''Qual a coordenada do ataque?
+> ''' )
     
     def QUESTION_CONFIRMATION_COORDINATE():
         return input( '''
 A coordenada está certa? (s/n)
-
 > ''')
     
     def QUESTION_WARNING_COORDINATE():

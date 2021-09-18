@@ -95,6 +95,7 @@ class GamePlay:
                 
                 coordinate = MESSAGES.QUESTION_COORDINATE( ship_name, ship_size )
             else:
+                print()
                 coordinate = MESSAGES.QUESTION_ATTACK()
                 
             try:
@@ -132,6 +133,7 @@ class GamePlay:
     def insert_ship():
         for ship_model in CONSTANTS.LIST_OF_SHIP_MODELS:
             inserted = False
+            UTILS.clear()
             
             while not inserted:
                 submarine_a_model = submarine_a()
@@ -142,14 +144,15 @@ class GamePlay:
                 GamePlay.coordinate_model = GamePlay.insert_coordinate( GamePlay.coordinate_model, ship_model )
                 
                 if ship_model.ship_code != submarine_b_model.ship_code and ship_model.ship_code != submarine_a_model.ship_code:
+                    print()
                     GamePlay.coordinate_model.position = GamePlay.vertical_or_horizontal().upper()
-                
+                UTILS.clear()
                 temporary_grid = CONSTANTS.GRID_GAME_BOARD
                 
                 if GamePlay.position_ship( temporary_grid, ship_model, GamePlay.coordinate_model ):
                     GameBoard.draw_game_board( temporary_grid )
                     inserted = GamePlay.position_is_correction( ship_model )
-                    
+                    UTILS.clear()
                     if inserted == False:
                         temporary_grid = GameBoard.remove_ship( ship_model.ship_code[0] )
                         print( "\nCoordenada cancelada!\n" )
