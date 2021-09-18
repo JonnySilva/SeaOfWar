@@ -1,6 +1,6 @@
-from utils.utils import Utils as UTILS
-from utils.MESSAGES import Messages as MESSAGES
-import utils.CONSTANTS as CONSTANTS
+from shared.utils import Utils as UTILS
+from shared.MESSAGES import Messages as MESSAGES
+import shared.CONSTANTS as CONSTANTS
 
 from console.game_board import GameBoard as GameBoard
 

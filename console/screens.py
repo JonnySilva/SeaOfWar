@@ -1,5 +1,5 @@
-from utils.MESSAGES import Messages as MESSAGE
-from utils.utils import Utils as UTILS
+from shared.MESSAGES import Messages as MESSAGE
+from shared.utils import Utils as UTILS
 from console.game_board import GameBoard as GAME_BOARD
 from console.gameplay import GamePlay as gameplay
 from console.skynet import Skynet as skynet

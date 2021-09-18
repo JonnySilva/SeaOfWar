@@ -1,5 +1,5 @@
 import sys
-from utils.MESSAGES import Messages as MESSAGE
+from shared.MESSAGES import Messages as MESSAGE
 from console.screens import Screens as screen
 
 def main():

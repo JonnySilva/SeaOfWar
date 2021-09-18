@@ -1,7 +1,7 @@
 from models.coordinate_model import CoordinateModel
 from console.gameplay import GamePlay as game_play
-import utils.CONSTANTS as CONSTANTS
-from utils.MESSAGES import Messages as MESSAGE
+import shared.CONSTANTS as CONSTANTS
+from shared.MESSAGES import Messages as MESSAGE
 
 
 class Attacks:

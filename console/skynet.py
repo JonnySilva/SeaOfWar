@@ -2,8 +2,8 @@ import random
 import pandas as pd
 import numpy as np
 
-import utils.CONSTANTS as CONSTANTS
-from utils.utils import Utils as utils
+import shared.CONSTANTS as CONSTANTS
+from shared.utils import Utils as utils
 from models.coordinate_model import CoordinateModel
 from console.gameplay import GamePlay as gameplay
 
