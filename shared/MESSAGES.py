@@ -107,10 +107,10 @@ class Messages:
         print( f'\n> SkyNet:\n  — Estou criando uma estratégia e irei te ganhar', end=CONSTANTS.EMPTY )
     
     def MESSAGE_ATTACK_PLAYER( player_name='' ):
-        print( f'\n> Esta é a vez do(a) \33[33m{player_name}\033[0m!' )
+        print( f'\n> Esta é a vez do(a) \033[1;35m{player_name}\033[0m!' )
     
     def MESSAGE_ATTACK_SKYNET():
-        print( '\n> Esta é a vez da \33[33mSkyNet\033[0m!' )
+        print( '\n> Esta é a vez da \033[1;35mSkyNet\033[0m!' )
     
     def MESSAGE_WINNER( player_name='' ):
         if player_name == 'SkyNet':
@@ -139,7 +139,7 @@ class Messages:
         return input( '\nTem certeza que deseja sair? o(〒﹏〒)o\n\n[ENTER]. Menu\n[0]. Sair \n> ' )
     
     def QUESTION_HORIZONTAL_OR_VERTICAL():
-        return input( '\nDeseja que o barco fique na vertical ou na horizontal?\n[V]. Vertical\n[H]. Horizontal\n> ' )
+        return input( '\nDeseja que o barco fique na vertical ou na horizontal?\n\n[V]. Vertical\n[H]. Horizontal\n> ' )
     
     def QUESTION_COORDINATE( ship_name, ship_size ):
         return input( f'\nDigite a coordenada que deseja colocar o {ship_name} ({ship_size} casas):\n(exemplo: A1)\n> ' )
