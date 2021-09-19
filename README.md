@@ -1,6 +1,6 @@
 # Sea of War
 
-![Menu do Jogo](https://github.com/JonnySilva/battleship-python/blob/RC_2021-09-18_DEV/docs/banner.png)
+![Menu do Jogo](https://github.com/JonnySilva/battleship-python/blob/main/docs/banner.png)
 
  - **Projeto de Bloco:** Computação e Inteligência Artificial
 
@@ -17,10 +17,10 @@
 O jogador humano precisa posicionar seus barcos manualmente, atacar e tentar vencer o agente inteligente (SkyNet). Enquanto a SkyNet posiciona todos os barcos randomicamente e usa técnicas de Algoritmo Genético para não perder essa disputa. Desta forma todas as regras usadas no Sea of War foram retiradas do famoso jogo de tabuleiro Batalha Naval.
 
 ## Game Design Canvas - (GDC)
-![GDC](https://github.com/JonnySilva/battleship-python/blob/main/regras_de_negocios/GDC.jpg)
+![GDC](https://github.com/JonnySilva/battleship-python/blob/main/docs/GDC.jpg)
 
 ## Game Model Canvas - (GMC)
-![GMC](https://github.com/JonnySilva/battleship-python/blob/main/regras_de_negocios/GMC.jpg)
+![GMC](https://github.com/JonnySilva/battleship-python/blob/main/docs/GMC.jpg)
 
 ## Tecnologias usadas no projeto
  - Python 3.9.7
