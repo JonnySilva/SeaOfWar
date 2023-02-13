@@ -9,12 +9,12 @@
     - [Matheus S. Rego](https://github.com/matheus-srego)
     - [Vinícius Brêttas](https://github.com/Brettas)
 
-## Tecnologias usadas no projeto
- - Python 3.9.7
- - PIP
- - Pandas
- - Numpy
- - Técnica de Algoritmos Genéticos
+## Stack
+ - ```Python 3.9.7```
+ - ```PIP```
+ - ```Pandas```
+ - ```Numpy```
+ - ```Técnicas de Algoritmos Genéticos```
 
 ## Objetivo
 O jogo Sea of War foi pensado a partir das regras do jogo de tabuleiro Batalha Naval. Este projeto acadêmico foi desenvolvido com o intuito de implementar um agente inteligente, usando Algoritmo Genético para I.A. (Inteligência Artificial) onde está vai aprender a realizar os melhores ataques contra o jogador humano, para, por fim, jogar contra um jogador humano e, podendo ou não, ganhar o jogo. 
