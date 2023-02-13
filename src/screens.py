@@ -23,10 +23,10 @@ class Screens:
     
     # 1. TELA NOME DO JOGADOR ------------------------
     def screen_create_player():
-        while Screens.player_model.player_name == '':
+        while ( Screens.player_model.player_name == '' ) or ( Screens.player_model.player_name is None ) or ( Screens.player_model.player_name.isspace() ):
             Screens.player_model.player_name = MESSAGE.QUESTION_NAME()
             
-            if Screens.player_model.player_name == '':
+            if ( Screens.player_model.player_name == '' ) or ( Screens.player_model.player_name is None ) or ( Screens.player_model.player_name.isspace() ):
                 UTILS.clear()
                 MESSAGE.MESSAGE_WARNING_EMPTY_NAME()
         else:
@@ -87,7 +87,7 @@ class Screens:
             
             if has_winner != 0:
                 playagain = MESSAGE.QUESTION_PLAY_AGAIN().upper()
-                while (playagain != "S") and (playagain != "N"):
+                while ( playagain != "S" ) and ( playagain != "N" ):
                     playagain = MESSAGE.QUESTION_WARNING_COORDINATE().upper()
                 if playagain == "S":
                     print( "\nComeçando uma nova partida..." )
@@ -96,9 +96,8 @@ class Screens:
                     break
                 elif playagain == "N":
                     Screens.screen_exit()
-                    break               
-
-
+                    break
+    
     # 0. Sair ----------------------------------------
     def screen_exit():
         option_is_enter = MESSAGE.QUESTION_RETURN_OR_EXIT()

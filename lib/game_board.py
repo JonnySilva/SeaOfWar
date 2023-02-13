@@ -4,8 +4,8 @@ import shared.CONSTANTS as CONSTANTS
 
 class GameBoard:
     
-    human_lifes = [False,False,False,False,False,False]
-    skynet_lifes = [False,False,False,False,False,False]
+    human_lifes = [False, False, False, False, False, False]
+    skynet_lifes = [False, False, False, False, False, False]
 
     # Draw table ---------------------
     def generate_space( amount, final ):
@@ -124,15 +124,13 @@ class GameBoard:
         return CONSTANTS.GRID_GAME_BOARD
     
     def generate_game_board( grid1=None, grid2=None ):
-        # grid = grid if grid == None else GRID_GAME_BOARD
-        
-        if grid1 != None and grid2 != None:
+        if ( grid1 != None ) and ( grid2 != None ):
             GameBoard.draw_game_board( grid1 )
             GameBoard.draw_life( grid1, GameBoard.human_lifes )
             GameBoard.draw_game_board( GameBoard.invisible_board( grid2 ) )
             GameBoard.draw_life( grid2, GameBoard.skynet_lifes )
         
-        elif grid1 != None and grid2 == None:
+        elif ( grid1 != None ) and ( grid2 == None ):
             if grid1 == None:
                 grid1 = CONSTANTS.GRID_GAME_BOARD
             

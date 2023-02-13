@@ -33,7 +33,7 @@ class GamePlay:
     
     # Regra: O barco não pode sobrepor outro barco e nem ficar fora do tabuleiro.
     def verify_position_grid( grid, coordinate_y, coordinate_x, verbose=True ):
-        if coordinate_x >= CONSTANTS.SIZE or coordinate_y >= CONSTANTS.SIZE or coordinate_x < 0 or coordinate_y < 0:
+        if ( coordinate_x >= CONSTANTS.SIZE ) or ( coordinate_y >= CONSTANTS.SIZE ) or ( coordinate_x < 0 or coordinate_y < 0 ):
             if verbose:
                 MESSAGES.MESSAGE_WARNING_SHIP_OUTSIDE()
                 GamePlay.coordinate_model.reset()
@@ -87,7 +87,7 @@ class GamePlay:
                 return False
     
     def insert_coordinate( coordinate_model, ship_model=None ):
-        while coordinate_model.coordinate_x < 0 or coordinate_model.coordinate_y < 0 or coordinate_model.coordinate_x > CONSTANTS.SIZE or coordinate_model.coordinate_y > CONSTANTS.SIZE:
+        while ( coordinate_model.coordinate_x < 0 ) or ( coordinate_model.coordinate_y < 0 ) or ( coordinate_model.coordinate_x > CONSTANTS.SIZE ) or ( coordinate_model.coordinate_y > CONSTANTS.SIZE ):
             coordinate = ''
             length = len( coordinate )
             
@@ -149,6 +149,7 @@ class GamePlay:
                 
                 if ship_model.ship_code != submarine_r_model.ship_code and ship_model.ship_code != submarine_t_model.ship_code:
                     GamePlay.coordinate_model.position = GamePlay.vertical_or_horizontal().upper()
+                    
                 UTILS.clear()
                 temporary_grid = CONSTANTS.GRID_GAME_BOARD
                 
