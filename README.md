@@ -29,6 +29,15 @@ O jogador humano precisa posicionar seus barcos manualmente, atacar e tentar ven
 ## Game Model Canvas - (GMC)
 ![GMC](https://github.com/JonnySilva/battleship-python/blob/main/docs/GMC.jpg)
 
+## Ferramentas necessário na sua maquina
+
+Antes de executar o projeto, é necessário ter as seguintes ferramentas instaladas em sua máquina:
+ - [Git - Opcional](https://git-scm.com/downloads)
+ - [Python](https://www.python.org/)
+ - [PIP](https://pip.pypa.io/en/stable/cli/pip_install/)
+ - [Pandas](https://pypi.org/project/pandas/)
+ - [Numpy](https://numpy.org/install/)
+
 ## Referências
 O projeto foi desenvolvido e estruturado com base projetos que já existiam no GitHub e em artigos na web.
 
